@@ -27,7 +27,10 @@
   border-radius: 5px;
   border: 2px solid black;
 }
-
+.songImage{
+  width: 20%;
+  height: auto;
+}
 /*a {
   font-weight: 500;
   color: #646cff;

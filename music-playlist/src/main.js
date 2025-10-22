@@ -4,4 +4,6 @@ import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { renderSongs } from './counter.js'
 
-renderSongs(songsArr, document.querySelector('.initialSongsContainer'))
+renderSongs(songsArr, document.querySelector('.initialSongsContainer'));
+
+

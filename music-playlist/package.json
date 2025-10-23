@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "daisyui": "^5.3.8",
     "vite": "npm:rolldown-vite@7.1.14"
   },
   "overrides": {

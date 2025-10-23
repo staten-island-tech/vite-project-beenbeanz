@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
 :root {
   font-family: 'Fuzzy Bubbles';
   line-height: 1.5;
@@ -26,10 +29,19 @@
   justify-content: space-around;
   border-radius: 5px;
   border: 2px solid black;
+  margin: 30px;
 }
 .songImage{
   width: 20%;
   height: auto;
+}
+.addPlaylistBtn{
+  width: 8%;
+  border: 1px solid blue;
+  cursor: pointer;
+}
+.inputBox{
+  border: 2px solid black;
 }
 /*a {
   font-weight: 500;

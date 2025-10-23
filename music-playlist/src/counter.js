@@ -35,7 +35,12 @@ export function renderSongs(arr, element){
     `;
     element.innerHTML += html;
 });
-} 
+}
+
+const initialSongsContainer = document.querySelector('.initialSongsContainer');
+export function addPlaylistForm(){
+  initialSongsContainer.innerHTML = '';
+}
 
 
 

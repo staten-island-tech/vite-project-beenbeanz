@@ -16,7 +16,7 @@
     </header>
 
     <div class="playlistTabs">
-      <button class="allSongs">all songs catalog</button>
+      <button class="allSongs btn-primary">all songs catalog</button>
       <button class="addPlaylistBtn">+</button>
     </div>
     
@@ -32,6 +32,22 @@
             </div>
             <img class="songImage" src="src/hte.png" alt="Album Cover">
         </div>
+
+        <form action="" method="get" class="addPlaylistForm">
+          <h3 class="formHeader">Add a song</h3>
+          <label for="songName">Input song title</label>
+          <input type="text" name="songName" class="formSongName inputBox"><br>
+          <label for="songArtist">Input artist</label>
+          <input type="text" name="songArtist" class="formSongArtist inputBox"><br>
+          <label for="songAlbum">Input album</label>
+          <input type="text" name="songAlbum" class="formSongAlbum inputBox"><br>
+          <label for="songLength">Input length of song</label>
+          <input type="text" name="songLength" class="formSongLength inputBox"><br>
+          <label for="songFile">Input audio file of song</label>
+          <input type="file" name="songFile" class="formSongFile inputBox"><br>
+
+          <button class="submitFormBtn">Submit</button>
+        </form>
     </section>
 
     <script type="module" src="/src/main.js"></script>

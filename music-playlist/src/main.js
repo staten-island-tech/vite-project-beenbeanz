@@ -1,7 +1,6 @@
 import './style.css'
 import { songsArr } from './counter.js'
 import { addPlaylistForm } from './counter.js'
-import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { renderSongs } from './counter.js'
 

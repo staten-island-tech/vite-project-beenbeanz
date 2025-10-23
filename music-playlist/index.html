@@ -7,20 +7,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
     <title>Music Playlist</title>
   </head>
   <body>
      <header class="header">
-        <h1 class="h1Header">Create your own playlist!</h1>
+        <h1 class="h1Header ">Create your own playlist!</h1>
         <h2 class="h2Header">Made by Hailey Lan ~</h2>    
     </header>
 
     <div class="playlistTabs">
-      <button class="allSongs btn-primary">all songs catalog</button>
+      <button class="allSongs">all songs catalog</button>
       <button class="addPlaylistBtn">+</button>
     </div>
-    
-    
+
     <section class="initialSongsContainer">
         <div class="songCard">
             <button class="playPauseBtn">▶</button>
@@ -33,7 +33,7 @@
             <img class="songImage" src="src/hte.png" alt="Album Cover">
         </div>
 
-        <form action="" method="get" class="addPlaylistForm">
+        <!--<form action="" method="get" class="addPlaylistForm">
           <h3 class="formHeader">Add a song</h3>
           <label for="songName">Input song title</label>
           <input type="text" name="songName" class="formSongName inputBox"><br>
@@ -43,11 +43,9 @@
           <input type="text" name="songAlbum" class="formSongAlbum inputBox"><br>
           <label for="songLength">Input length of song</label>
           <input type="text" name="songLength" class="formSongLength inputBox"><br>
-          <label for="songFile">Input audio file of song</label>
-          <input type="file" name="songFile" class="formSongFile inputBox"><br>
 
           <button class="submitFormBtn">Submit</button>
-        </form>
+        </form>-->
     </section>
 
     <script type="module" src="/src/main.js"></script>

@@ -1,5 +1,3 @@
-@import "tailwindcss";
-@plugin "daisyui";
 
 :root {
   font-family: 'Fuzzy Bubbles';
@@ -14,15 +12,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --color-primary: rgba(255, 0, 21, 0.267);
 }
-.initialSongsContainer{
+/*.initialSongsContainer{
   max-width: 1000px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   margin: auto;
-}
+}*/
 .songCard{
   display: flex;
   flex-wrap: wrap;

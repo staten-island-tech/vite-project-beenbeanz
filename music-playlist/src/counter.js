@@ -38,20 +38,46 @@ export function renderSongs(arr, element){
 }
 
 const initialSongsContainer = document.querySelector('.initialSongsContainer');
+const playlistForm = document.querySelector(".addPlaylistForm");
+
 export function addPlaylistForm(){
   initialSongsContainer.innerHTML = '';
+  playlistForm.style.display = 'block';
 }
 
-
-
-
-
-/*export function setupCounter(element) {
-  let counter = 0
-  const setCounter = (count) => {
-    counter = count
-    element.innerHTML = `count is ${counter}`
+const playlistTabs = document.querySelector(".playlistTabs");
+export const allPlaylists = [];
+export function submitPlaylistForm(){
+  const obj = {};
+  let playlistName = '';
+  for (let i = 0; i < playlistForm.elements.length; i++) {
+      if (element.name && element.value) { 
+        obj[element.name] = element.value;
+      }
   }
-  element.addEventListener('click', () => setCounter(counter + 1))
-  setCounter(0)
-}*/
+  allPlaylists.push(obj);
+
+  playlistTabs.insertAdjacentHTML('beforeend', `
+    <button class="playlist">${allPlaylists.playlistName}</button>
+  `);
+
+  playlistForm.reset();
+  playlistForm.style.display = 'none';
+  console.log(allPlaylists)
+}
+
+//DISPLAY NEW PLAYLIST
+export function displayPlaylist(playlist){
+  initialSongsContainer.insertAdjacentElement('beforeend', `
+     <div class="playlistHeader">
+        <div class="playlistHeaderTexts">
+          <p class="playlistName">${playlist.playlistName}</p>
+          <p class="playlistDesc">${playlist.playlistDesc}</p>
+          <p class="playlistDate">${playlist.playlistDate}</p>
+        </div>
+        <img class="songImage" src="${playlist.playlistImage}" alt="Album Cover">
+      </div>  
+  `)
+}
+
+   

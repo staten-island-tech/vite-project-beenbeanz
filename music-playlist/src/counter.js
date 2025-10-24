@@ -51,14 +51,16 @@ export function submitPlaylistForm(){
   const obj = {};
   let playlistName = '';
   for (let i = 0; i < playlistForm.elements.length; i++) {
+    const element = playlistForm[i];
       if (element.name && element.value) { 
         obj[element.name] = element.value;
       }
   }
   allPlaylists.push(obj);
 
+  const latestPlaylist = allPlaylists[allPlaylists.length - 1];
   playlistTabs.insertAdjacentHTML('beforeend', `
-    <button class="playlist">${allPlaylists.playlistName}</button>
+    <button class="playlist">${latestPlaylist.playlistName}</button>
   `);
 
   playlistForm.reset();
@@ -78,6 +80,9 @@ export function displayPlaylist(playlist){
         <img class="songImage" src="${playlist.playlistImage}" alt="Album Cover">
       </div>  
   `)
-}
-
+  }
    
+const playlistTabBtns = document.querySelector('.playlist');
+if(allPlaylists.length > 1){
+  playlistTabBtns.forEach(btn => btn.addEventListener('click', displayPlaylist(allPlaylists[1]))); 
+}

@@ -30,7 +30,9 @@ export function renderSongs(arr, element){
             <p class="songAlbum">${song.album}</p>
             <p class="songDuration">${song.length}</p>
           </div>
-          <img class="songImage" src="${song.image}" alt="Album Cover">
+          <div class="songImgDiv">
+            <img class="songImage" src="${song.image}" alt="Album Cover">
+          </div>
       </div>
     `;
     element.innerHTML += html;

@@ -1,3 +1,4 @@
+
 :root {
   font-family: 'Fuzzy Bubbles';
   line-height: 1.5;
@@ -5,41 +6,71 @@
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #ffffff;
+  background-color: #0d2555;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --color-primary: rgba(255, 255, 255, 0.267);
+
+  --dark-text: #d8d8d8;
+  --dark-buttons: #000000;
+  --dark-primary: #090b5f;
 }
-/*.initialSongsContainer{
+.h1Header,.h2Header{
+  color: var(--dark-text);
+}
+.playlistBtn{
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  width: 135px;
+  background-color: var(--dark-primary);
+}
+.initialSongsContainer{
   max-width: 1000px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  margin: auto;
-}*/
+}
 .songCard{
+  height: 250px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  border-radius: 5px;
-  border: 2px solid black;
+  border-radius: 10px;
   margin: 30px;
+  background-color: var(--dark-primary);
+}
+.playPauseBtn{
+  color: var(--dark-primary);
+  display: block;
+  margin: auto 0;
+}
+.songTexts{
+  color: var(--dark-text);
 }
 .songImage{
-  width: 20%;
-  height: auto;
+  object-fit: fill;  
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
 }
-.addPlaylistBtn{
-  width: 8%;
-  border: 1px solid blue;
-  cursor: pointer;
+.songImgDiv{
+  margin: auto 0;
+  width: 225px;
+  height: 225px;
 }
 .inputBox{
   border: 2px solid rgb(255, 255, 255);
+}
+.form{
+  color: var(--dark-text);
+}
+.inputBox{
+  border-radius: 7px;
 }
 /*a {
   font-weight: 500;

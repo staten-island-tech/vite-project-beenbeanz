@@ -33,7 +33,9 @@ export function renderSongs(arr, element){
             <p class="songAlbum">${song.album}</p>
             <p class="songDuration">${song.length}</p>
           </div>
-          <img class="songImage" src="${song.image}" alt="Album Cover">
+          <div class="songImgDiv">
+            <img class="songImage" src="${song.image}" alt="Album Cover">
+          </div>
       </div>
     `;
     element.innerHTML += html;
@@ -46,8 +48,10 @@ const playlistForm = document.querySelector(".addPlaylistForm");
 export function addPlaylistForm(){
   initialSongsContainer.innerHTML = '';
   playlistForm.style.display = 'block';
+  addSongsForm.style.display = 'none';
 }
 
+const selectDropdown = document.querySelector('#selectDropdown');
 const playlistTabs = document.querySelector(".playlistTabs");
 export const allPlaylists = [];
 export function submitPlaylistForm(){
@@ -65,13 +69,17 @@ export function submitPlaylistForm(){
     <button class="playlist" data-index="${allPlaylists.length - 1}">${latestPlaylist.playlistName}</button>
   `);
 
+  selectDropdown.insertAdjacentHTML('beforeend', `
+    <option value="${latestPlaylist.playlistName}">${latestPlaylist.playlistName}</option>
+  `)
+
   playlistForm.reset();
   playlistForm.style.display = 'none';
-  console.log(allPlaylists.length)
+  console.log(allPlaylists[allPlaylists.length - 1])
 
   displayPlaylist(allPlaylists[allPlaylists.length - 1]);
 }
-
+const addSongsForm = document.querySelector('.addSongsForm');
 //DISPLAY NEW PLAYLIST
 export function displayPlaylist(playlist){
   initialSongsContainer.innerHTML = '';
@@ -83,7 +91,6 @@ export function displayPlaylist(playlist){
           <p class="playlistDate">${playlist.dateCreated}</p>
         </div>
         <img class="songImage" src="${playlist.playlistImage}" alt="Album Cover">
-        <button class="addSongBtn">add song +</button>
       </div>  
   `)
 }
@@ -95,8 +102,14 @@ playlistTabs.addEventListener('click', (e) => {
   }
 });
 
+
+export function showSongForm(){
+  initialSongsContainer.innerHTML = '';
+  addSongsForm.style.display = 'block';
+  playlistForm.style.display = 'none';
+}
+
 //ADDING SONGS
-const addSongsForm = document.querySelector('.addSongsForm');
 export function submitSongForm(){
   const songs = [];
   //const currentPlaylist = allPlaylists[allPlaylists - 1];

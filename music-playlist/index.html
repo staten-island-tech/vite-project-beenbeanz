@@ -17,8 +17,9 @@
     </header>
 
     <div class="playlistTabs">
-      <button class="allSongs">all songs catalog</button>
-      <button class="addPlaylistBtn">+</button>
+      <button class="allSongs playlistBtn">all songs catalog</button>
+      <button class="addPlaylistBtn playlistBtn">+ add playlist</button>
+      <button class="addSongBtn playlistBtn">+ add song</button>
     </div>
 
     <section class="initialSongsContainer">
@@ -30,11 +31,13 @@
               <p class="songAlbum">Happier Than Ever</p>
               <p class="songDuration">3:15</p>
             </div>
-            <img class="songImage" src="src/hte.png" alt="Album Cover">
+            <div class="songImgDiv">
+              <img class="songImage" src="src/hte.png" alt="Album Cover">
+            </div>
         </div>
     </section>
 
-    <form action="" method="get" class="addPlaylistForm" style="display:none">
+    <form action="" method="get" class="addPlaylistForm form" style="display:none">
       <h3 class="formHeader">Create a playlist</h3>
           <label for="playlistName">Input playlist name</label>
           <input type="text" name="playlistName" class="formPlaylistName inputBox"><br>
@@ -48,7 +51,7 @@
           <button id='PlaylistSubmitBtn' class="submitFormBtn" type="button">Submit</button>
     </form>
 
-    <form action="" method="get" class="addSongsForm" style="display:none">
+    <form action="" method="get" class="addSongsForm form" style="display:none">
           <h3 class="formHeader">Add a song</h3>
           <label for="songName">Input song title</label>
           <input type="text" name="songName" class="formSongName inputBox"><br>
@@ -58,8 +61,13 @@
           <input type="text" name="songAlbum" class="formSongAlbum inputBox"><br>
           <label for="songLength">Input length of song</label>
           <input type="text" name="songLength" class="formSongLength inputBox"><br>
+          <label for="selectDropdown">Select playlist to add song to</label>
+          <select name="playlistForSong" id="selectDropdown">
+            <option value="">Select a playlist</option>
+            
+          </select>
 
-          <button id='songSubmitBtn' class="submitFormBtn">Submit</button>
+          <button id='songSubmitBtn' class="submitFormBtn" type="button">Submit</button>
         </form>
 
     <script type="module" src="/src/main.js"></script>

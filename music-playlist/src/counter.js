@@ -83,6 +83,9 @@ const addSongsForm = document.querySelector('.addSongsForm');
 //DISPLAY NEW PLAYLIST
 export function displayPlaylist(playlist){
   initialSongsContainer.innerHTML = '';
+  playlistForm.style.display = 'none';
+  addSongsForm.style.display = 'none';
+
   initialSongsContainer.insertAdjacentHTML('beforeend', `
      <div class="playlistHeader">
         <div class="playlistHeaderTexts">
@@ -123,22 +126,26 @@ export function submitSongForm(){
   songs.push(obj);
 
   //add song to playlist
+
+  addSongsForm.style.display = 'none';
   console.log(obj.playlistForSong);
   displayPlaylist(obj.playlistForSong);
   renderSongAdded(obj);
 }
 
 function renderSongAdded(song){
-  initialSongsContainer.innerHTML += `
+  console.log(song)
+  initialSongsContainer.insertAdjacentHTML('beforeend', `
     <div class="songCard">
         <button class="playPauseBtn">▶</button>
         <div class="songTexts">
-          <p class="songTitle">${song.title}</p>
-          <p class="songArtist">Billie Eilish</p>
-          <p class="songAlbum">Happier Than Ever</p>
-          <p class="songDuration">3:15</p>
+          <p class="songTitle">${song.songName}</p>
+          <p class="songArtist">${song.songArtist}</p>
+          <p class="songAlbum">${song.songAlbum}</p>
+          <p class="songDuration">${song.songLength}</p>
         </div>
     </div>
-  `;
+  `);
+  
 }
 

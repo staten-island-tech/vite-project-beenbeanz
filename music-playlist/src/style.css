@@ -72,6 +72,9 @@
 .inputBox{
   border-radius: 7px;
 }
+.playlistHeader{
+  color: var(--dark-text);
+}
 /*a {
   font-weight: 500;
   color: #646cff;

@@ -34,6 +34,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
+  border: 2px solid red;
 }
 .songCard{
   height: 250px;
@@ -74,6 +75,9 @@
 }
 .playlistHeader{
   color: var(--dark-text);
+  text-align: center;
+  font-size: 1.4rem;
+  border: 2px solid var(--dark-text);
 }
 /*a {
   font-weight: 500;

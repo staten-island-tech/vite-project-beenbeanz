@@ -54,6 +54,7 @@ export function addPlaylistForm(){
 const selectDropdown = document.querySelector('#selectDropdown');
 const playlistTabs = document.querySelector(".playlistTabs");
 export const allPlaylists = [];
+const songs = [];
 export function submitPlaylistForm(){
   const obj = {};
   for (let i = 0; i < playlistForm.elements.length; i++) {
@@ -93,9 +94,15 @@ export function displayPlaylist(playlist){
           <p class="playlistDesc">${playlist.playlistDesc}</p>
           <p class="playlistDate">${playlist.dateCreated}</p>
         </div>
-        <img class="songImage" src="${playlist.playlistImage}" alt="Album Cover">
+        <img class="songImage" src="${playlist.playlistImage}" alt="Playlist Cover">
       </div>  
   `)
+
+  songs.forEach(song => {
+    if(song.playlistForSong === playlist.playlistName){
+      renderSongAdded(song)
+    }
+  })
 }
 
 playlistTabs.addEventListener('click', (e) => {
@@ -113,9 +120,9 @@ export function showSongForm(){
 }
 
 //ADDING SONGS
+
 export function submitSongForm(){
   initialSongsContainer.innerHTML = ''
-  const songs = [];
   const obj = {};
   for (let i = 0; i < addSongsForm.elements.length; i++) {
     const element = addSongsForm[i];
@@ -130,7 +137,7 @@ export function submitSongForm(){
   addSongsForm.style.display = 'none';
   console.log(obj.playlistForSong);
   displayPlaylist(obj.playlistForSong);
-  renderSongAdded(obj);
+  //renderSongAdded(obj);
 }
 
 function renderSongAdded(song){
@@ -146,6 +153,5 @@ function renderSongAdded(song){
         </div>
     </div>
   `);
-  
 }
 

@@ -28,13 +28,27 @@
   background-color: var(--dark-primary);
   color: var(--dark-text);
 }
+.bigContainer {
+  display: flex;              
+  gap: 20px;                  
+  padding: 20px;
+}
 .initialSongsContainer{
-  max-width: 1000px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
   border: 2px solid red;
+}
+section {
+  flex: 1;                   
+  box-sizing: border-box;     
+}
+@media (max-width: 400px) {
+    .container {
+      flex-direction: column;   /* Stack vertically */
+    }
 }
 .songCard{
   height: 250px;
@@ -78,6 +92,20 @@
   text-align: center;
   font-size: 1.4rem;
   border: 2px solid var(--dark-text);
+}
+.h4Header{
+  color: var(--dark-text);
+  font-size: 2rem;
+  border: 1px solid red;
+  text-align: center;
+  margin: 0;
+}
+.petImgsDiv{
+  display: flex;
+  flex-wrap: wrap;
+}
+.petImg:hover{
+  transform: scale(1.2);
 }
 /*a {
   font-weight: 500;

@@ -100,12 +100,20 @@ section {
   text-align: center;
   margin: 0;
 }
+.petContainer{
+  text-align: center;
+  
+}
 .petImgsDiv{
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
 }
 .petImg:hover{
   transform: scale(1.2);
+}
+.selectedPet{
+  background-color: blue;
 }
 /*a {
   font-weight: 500;

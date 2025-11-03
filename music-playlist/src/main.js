@@ -6,7 +6,10 @@ import { submitSongForm } from './counter.js'
 import { showSongForm } from './counter.js'
 import { renderSongs } from './counter.js'
 import { selectPet } from './pet.js'
+import { pet } from './pet.js'
 
+
+//counter.js
 renderSongs(songsArr, document.querySelector('.initialSongsContainer'));
 
 const allSongsBtn = document.querySelector('.allSongs');

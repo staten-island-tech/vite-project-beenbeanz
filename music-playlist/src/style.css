@@ -114,6 +114,15 @@ section {
 }
 .selectedPet{
   background-color: blue;
+  pointer-events: none;
+  margin: 100px;
+}
+.petDialogue{
+  color: var(--dark-text);
+  background-color: blue;
+  width: auto;
+  height: 100px;
+  margin: 0 auto;
 }
 /*a {
   font-weight: 500;

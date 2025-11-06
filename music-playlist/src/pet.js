@@ -1,8 +1,7 @@
 export let pet = '';
 const petContainer = document.querySelector('.petContainer');
 
-export function selectPet(e){
-    
+export function selectPet(e){    
     pet = e.target;
     pet.classList.remove('petImg');
     pet.classList.add('selectedPet');
@@ -19,8 +18,45 @@ export function selectPet(e){
     else if(pet.dataset.animal === 'lizard') petName = 'Beila Hu';
     else if(pet.dataset.animal === 'polar') petName = 'Michael Whalen';
 
-    petContainer.insertAdjacentHTML('beforebegin', `
-        <p class='petDialogue'>Hi my name is ${petName}</p>    
-    `);
+    let interval = 0;
+    setInterval(displayPetDialogue, 1000);
+
+    function displayPetDialogue(){
+        if(interval === 0){
+            petContainer.insertAdjacentHTML('beforeend', `
+                <p class='petDialogue'>Hi! My name is ${petName}!</p>    
+            `);
+        }
+        else if(interval === 1){
+            petContainer.insertAdjacentHTML('beforeend', `
+                <p class='petDialogue'>I am very needy and I need to be leveled up.</p>    
+            `);
+        }
+        else if(interval === 2){
+            petContainer.insertAdjacentHTML('beforeend', `
+                <p class='petDialogue'>Add songs to fill up my hungry stomach.</p>    
+            `);
+        }
+        else if(interval === 3){
+            petContainer.insertAdjacentHTML('beforeend', `
+                <p class='petDialogue'>For each minute of a song that you add, it'll fill up my happiness level by 1.</p>    
+            `);
+        }
+        else if(interval === 4){
+            petContainer.insertAdjacentHTML('beforeend', `
+                <p class='petDialogue'>When you play a nonexist song that doesn't have any audio, it'll also increase my level</p>    
+            `);
+        }
+        else if(interval === 5){
+            petContainer.insertAdjacentHTML('beforeend', `
+                <p class='petDialogue'>Once I get to level 67, a special guest will appear and do his signature 67 dance!</p>    
+            `);
+        }
+        interval++;
+    }
 }
     
+/*  one min of song -> happy++
+    one song added -> hunger++
+    when song is playing -> lvl progressively increases and activate gif
+*/

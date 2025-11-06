@@ -34,12 +34,13 @@
   padding: 20px;
 }
 .initialSongsContainer{
-  max-width: 500px;
+  max-width: 50%;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  border: 2px solid red;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
 }
 section {
   flex: 1;                   
@@ -96,33 +97,40 @@ section {
 .h4Header{
   color: var(--dark-text);
   font-size: 2rem;
-  border: 1px solid red;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
   text-align: center;
   margin: 0;
+  margin-bottom: 20px;
 }
 .petContainer{
   text-align: center;
-  
 }
 .petImgsDiv{
   display: flex;
   flex-wrap: wrap;
   margin: auto;
+  justify-content: center;
+}
+.petImg{
+  padding: 5px;
+  border-radius: 13px;
 }
 .petImg:hover{
   transform: scale(1.2);
 }
 .selectedPet{
-  background-color: blue;
   pointer-events: none;
   margin: 100px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 13px;
 }
 .petDialogue{
   color: var(--dark-text);
-  background-color: blue;
   width: auto;
-  height: 100px;
   margin: 0 auto;
+  padding: 5px;
 }
 /*a {
   font-weight: 500;

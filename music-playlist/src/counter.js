@@ -3,7 +3,7 @@ export const songsArr = [
   { name: "Bittersuite", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:58", image: "src/hmhas.png" },
   { name: "i love you", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "4:51", image: "src/wwafawdwg.png" },
   { name: "Bad Guy", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:14", image: "src/wwafawdwg.png" },
-  { name: "Everything I Wanted", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "4:05", image: "src/everythingiwanted.png" },
+  { name: "Everything I Wanted", artist: "Billie Eilish", album: "Everything I wanted", length: "4:05", image: "src/everythingiwanted.png" },
   { name: "When the Party's Over", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:17", image: "src/wwafawdwg.png" },
   { name: "Bury a Friend", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:13", image: "src/wwafawdwg.png" },
   { name: "All the Good Girls Go to Hell", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "2:48", image: "src/wwafawdwg.png" },
@@ -154,4 +154,3 @@ function renderSongAdded(song){
     </div>
   `);
 }
-

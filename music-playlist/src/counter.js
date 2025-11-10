@@ -22,6 +22,8 @@ export const songsArr = [
 ];
 
 export function renderSongs(arr, element){
+  playlistForm.style.display = 'none';
+  addSongsForm.style.display = 'none';
   element.innerHTML = '';
   arr.forEach(song => {
     const html = `
@@ -94,10 +96,9 @@ export function displayPlaylist(playlist){
           <p class="playlistDesc">${playlist.playlistDesc}</p>
           <p class="playlistDate">${playlist.dateCreated}</p>
         </div>
-        <img class="songImage" src="${playlist.playlistImage}" alt="Playlist Cover">
       </div>  
   `)
-
+//<img class="songImage" src="${playlist.playlistImage}" alt="Playlist Cover">
   songs.forEach(song => {
     if(song.playlistForSong === playlist.playlistName){
       renderSongAdded(song)
@@ -136,7 +137,8 @@ export function submitSongForm(){
 
   addSongsForm.style.display = 'none';
   console.log(obj.playlistForSong);
-  displayPlaylist(obj.playlistForSong);
+  renderSongs(songsArr, initialSongsContainer)
+  //displayPlaylist(obj.playlistForSong);
   //renderSongAdded(obj);
 }
 

@@ -146,6 +146,23 @@ section {
   margin: 0 auto;
   padding: 5px;
 }
+.petProgressBars{
+  border: 2px solid var(--dark-text);
+  height: 100px;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.individualBar{
+  background-color: #000000;
+  height: 100px;
+  width: 20%;
+  border: 2px solid var(--dark-text);
+}
+.progressBarLabel{
+  color: var(--dark-text);
+}
 /*a {
   font-weight: 500;
   color: #646cff;

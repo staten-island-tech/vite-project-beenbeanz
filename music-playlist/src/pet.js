@@ -52,8 +52,43 @@ export function selectPet(e){
                 <p class='petDialogue'>Once I get to level 67, a special guest will appear and do his signature 67 dance!</p>    
             `);
         }
+        else if(interval === 6){
+            const petDialogues = document.querySelectorAll('.petDialogue');
+            petDialogues.forEach(petDiag => petDiag.remove())
+        }
+        else if(interval === 7){
+            petContainer.insertAdjacentHTML('beforeend', `
+                <p class="progressBarLabel">Level <span class='level'>0</span></p>
+                <div class="petProgressBars" id="levelBar">
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                </div>
+
+                <p class="progressBarLabel">Hunger Bar</p>
+                <div class="petProgressBars" id="hungerBar">
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                </div>
+
+                <p class="progressBarLabel">Happiness Bar</p>
+                <div class="petProgressBars" id="happinessBar">
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                <div class="individualBar"></div>
+                </div>
+            `);
+        }
         interval++;
     }
+    clearInterval(displayPetDialogue)
 }
     
 /*  one min of song -> happy++

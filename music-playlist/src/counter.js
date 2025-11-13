@@ -1,3 +1,6 @@
+import { increaseHunger } from './pet.js'
+
+
 export const songsArr = [
   { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "src/hte.png" },
   { name: "Bittersuite", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:58", image: "src/hmhas.png" },
@@ -138,8 +141,7 @@ export function submitSongForm(){
   addSongsForm.style.display = 'none';
   console.log(obj.playlistForSong);
   renderSongs(songsArr, initialSongsContainer)
-  //displayPlaylist(obj.playlistForSong);
-  //renderSongAdded(obj);
+  increaseHunger();
 }
 
 function renderSongAdded(song){

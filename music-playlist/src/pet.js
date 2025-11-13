@@ -60,35 +60,46 @@ export function selectPet(e){
             petContainer.insertAdjacentHTML('beforeend', `
                 <p class="progressBarLabel">Level <span class='level'>0</span></p>
                 <div class="petProgressBars" id="levelBar">
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
                 </div>
 
                 <p class="progressBarLabel">Hunger Bar</p>
                 <div class="petProgressBars" id="hungerBar">
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
                 </div>
 
                 <p class="progressBarLabel">Happiness Bar</p>
                 <div class="petProgressBars" id="happinessBar">
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
-                <div class="individualBar"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
+                    <div class="individualBar" style="background-color: none;"></div>
                 </div>
             `);
         }
         interval++;
     }
     clearInterval(displayPetDialogue)
+}
+
+let hungerLvl = 0;
+export function increaseHunger(){
+    const hungerBar = document.querySelector('#hungerBar');
+    const hungerBars = hungerBar.querySelectorAll('.individualBar');
+    
+    if(hungerLvl < hungerBars.length){
+        hungerBars[hungerLvl].style.backgroundColor = '#000000';
+        hungerLvl++;
+    }
 }
     
 /*  one min of song -> happy++

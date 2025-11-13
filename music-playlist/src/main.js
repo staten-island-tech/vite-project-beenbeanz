@@ -6,8 +6,6 @@ import { submitSongForm } from './counter.js'
 import { showSongForm } from './counter.js'
 import { renderSongs } from './counter.js'
 import { selectPet } from './pet.js'
-import { pet } from './pet.js'
-
 
 //counter.js
 renderSongs(songsArr, document.querySelector('.initialSongsContainer'));
@@ -27,9 +25,11 @@ addSongBtn.addEventListener('click', showSongForm);
 const songSubmitBtn = document.querySelector("#songSubmitBtn");
 songSubmitBtn.addEventListener('click', submitSongForm);
 
-
 //pet.js
 document.querySelectorAll('.petImg').forEach(pet => 
     pet.addEventListener('click', (e) => {
         selectPet(e)
 }));
+
+const playPauseBtns = document.querySelectorAll('.playPauseBtn');
+playPauseBtns.forEach(btn => btn.addEventListener('click', increaseLvl))

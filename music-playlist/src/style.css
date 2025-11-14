@@ -162,6 +162,20 @@ section {
 .progressBarLabel{
   color: var(--dark-text);
 }
+.insideBarDiv{
+  width: 0%; 
+  height: 10px; 
+  background-color: green; 
+  text-align: center; 
+  color: white; 
+  line-height: 30px;
+}
+.outsideBarDiv{
+  width: 100%; 
+  background-color: lightgrey; 
+  border-radius: 50px; 
+  overflow: hidden;
+}
 /*a {
   font-weight: 500;
   color: #646cff;

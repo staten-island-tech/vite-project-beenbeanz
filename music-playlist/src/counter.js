@@ -137,7 +137,6 @@ export function submitSongForm(){
   songs.push(obj);
 
   //add song to playlist
-
   addSongsForm.style.display = 'none';
   console.log(obj.playlistForSong);
   renderSongs(songsArr, initialSongsContainer)
@@ -158,3 +157,16 @@ function renderSongAdded(song){
     </div>
   `);
 }
+
+export function showPlayingBar(e){
+  const cardDiv = e.target.parentElement;
+  console.log(e.target.parentElement);
+  const html = `
+    <div class="outsideBarDiv">
+      <div class="insideBarDiv"></div>
+    </div>
+    `;
+  cardDiv.insertAdjacentHTML('beforeend', html);
+}
+  
+  

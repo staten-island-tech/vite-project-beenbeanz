@@ -102,6 +102,9 @@ export function increaseHunger(){
     }
 }
     
+export function increaseLvl(){
+    
+}
 /*  one min of song -> happy++
     one song added -> hunger++
     when song is playing -> lvl progressively increases and activate gif

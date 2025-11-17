@@ -159,14 +159,26 @@ function renderSongAdded(song){
 }
 
 export function showPlayingBar(e){
-  const cardDiv = e.target.parentElement;
-  console.log(e.target.parentElement);
+  let barOn = false;
+  const cardTexts = e.target.nextElementSibling;
+  console.log(e.target.nextElementSibling);
   const html = `
     <div class="outsideBarDiv">
       <div class="insideBarDiv"></div>
     </div>
     `;
-  cardDiv.insertAdjacentHTML('beforeend', html);
+
+
+  if(barOn = false){
+    cardTexts.insertAdjacentHTML('beforeend', html);
+    barOn = true;
+    console.log('hi')
+  }/* else {
+    const outsideBarDiv = document.querySelector('.outsideBarDiv');
+    const insideBarDiv = document.querySelector('.insideBarDiv');
+    outsideBarDiv.remove();
+    insideBarDiv.remove();
+    barOn = false;
+  }*/
+  
 }
-  
-  

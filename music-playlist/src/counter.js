@@ -163,6 +163,7 @@ let timerInterval;
 let seconds = 0;
 const twinkleSong = new Audio('./src/twinkle.mp3');
 twinkleSong.volume = .1;
+import { increaseLvl } from './pet.js'
 
 export function showPlayingBar(e){
   const cardTexts = e.target.nextElementSibling;
@@ -172,7 +173,6 @@ export function showPlayingBar(e){
   //math....
   const songSeconds = Number(songLength.slice(-2)) + Number(songLength.slice(2,3,4) * 60);
   const interval = Number((100/songSeconds));
-  console.log(typeof interval === 'number')
 
   const html = `
     <div class="outsideBarDiv">
@@ -193,10 +193,12 @@ export function showPlayingBar(e){
       timerInterval = setInterval(() => {
         seconds++;
        
-        console.log(seconds);
         width += interval;
-        console.log(width)
         innerDiv.style.width = width + `%`;
+
+        if(seconds % 3 === 0){
+          increaseLvl();
+        }
 
       }, 1000);
     }
@@ -205,6 +207,8 @@ export function showPlayingBar(e){
     e.target.innerHTML = '▶';
     twinkleSong.pause();
     
+    const outerDiv = document.querySelector('.outsideBarDiv');
+    const innerDiv = document.querySelector('.insideBarDiv');
     outerDiv.remove();
     innerDiv.remove();
     clearInterval(timerInterval);
@@ -212,5 +216,3 @@ export function showPlayingBar(e){
     seconds = 0;
   }
 }
-
-

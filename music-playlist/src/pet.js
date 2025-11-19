@@ -101,9 +101,25 @@ export function increaseHunger(){
         hungerLvl++;
     }
 }
-    
+
+let lvl = 0;
+let level = 0;
 export function increaseLvl(){
+    const lvlBar = document.querySelector('#levelBar');
+    const lvlBars = lvlBar.querySelectorAll('.individualBar');
+    const levelText = document.querySelector('.level');
     
+    
+    if(lvl < lvlBars.length){
+        lvlBars[lvl].style.backgroundColor = '#000000';
+        lvl++;
+        console.log(lvl)
+    } else if(lvl >= lvlBars.length){
+        lvlBars.forEach(bar => bar.style.backgroundColor = 'transparent');
+        lvl = 0;
+        level++;
+        levelText.innerHTML = level;
+    }
 }
 /*  one min of song -> happy++
     one song added -> hunger++

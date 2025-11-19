@@ -158,27 +158,59 @@ function renderSongAdded(song){
   `);
 }
 
+
+let timerInterval;
+let seconds = 0;
+const twinkleSong = new Audio('./src/twinkle.mp3');
+twinkleSong.volume = .1;
+
 export function showPlayingBar(e){
-  let barOn = false;
   const cardTexts = e.target.nextElementSibling;
-  console.log(e.target.nextElementSibling);
+  const songCard = e.target.closest('.songCard')
+  const songLength = songCard.querySelector('.songDuration').textContent;
+
+  //math....
+  const songSeconds = Number(songLength.slice(-2)) + Number(songLength.slice(2,3,4) * 60);
+  const interval = Number((100/songSeconds));
+  console.log(typeof interval === 'number')
+
   const html = `
     <div class="outsideBarDiv">
       <div class="insideBarDiv"></div>
     </div>
     `;
 
+  if(e.target.innerHTML === '▶'){
+    cardTexts.insertAdjacentHTML('afterend', html);
+    e.target.innerHTML = '||';
+    twinkleSong.play();                                                             
 
-  if(barOn = false){
-    cardTexts.insertAdjacentHTML('beforeend', html);
-    barOn = true;
-    console.log('hi')
-  }/* else {
-    const outsideBarDiv = document.querySelector('.outsideBarDiv');
-    const insideBarDiv = document.querySelector('.insideBarDiv');
-    outsideBarDiv.remove();
-    insideBarDiv.remove();
-    barOn = false;
-  }*/
-  
+    const outerDiv = document.querySelector('.outsideBarDiv');
+    const innerDiv = document.querySelector('.insideBarDiv');
+
+    let width = 0;
+    if(!timerInterval){
+      timerInterval = setInterval(() => {
+        seconds++;
+       
+        console.log(seconds);
+        width += interval;
+        console.log(width)
+        innerDiv.style.width = width + `%`;
+
+      }, 1000);
+    }
+
+  } else {
+    e.target.innerHTML = '▶';
+    twinkleSong.pause();
+    
+    outerDiv.remove();
+    innerDiv.remove();
+    clearInterval(timerInterval);
+    timerInterval = null;
+    seconds = 0;
+  }
 }
+
+

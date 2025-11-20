@@ -137,6 +137,7 @@ export function playGif(){
     petImg.src = 'src/' + petImg.dataset.animal + '.gif';
     console.log(petImg.src)
 }
+export function stopGif(){}
 /*  one min of song -> happy++
     one song added -> hunger++
     when song is playing -> lvl progressively increases and activate gif

@@ -1,4 +1,8 @@
 import { increaseHunger } from './pet.js'
+import { increaseLvl } from './pet.js';
+import { increaseHappiness } from './pet.js';
+import { playGif } from './pet.js';
+import { stopGif } from './pet.js;'
 
 
 export const songsArr = [
@@ -81,7 +85,6 @@ export function submitPlaylistForm(){
 
   playlistForm.reset();
   playlistForm.style.display = 'none';
-  //console.log(allPlaylists[allPlaylists.length - 1])
 
   displayPlaylist(allPlaylists[allPlaylists.length - 1]);
 }
@@ -163,11 +166,11 @@ let timerInterval;
 let seconds = 0;
 const twinkleSong = new Audio('./src/twinkle.mp3');
 twinkleSong.volume = .1;
-import { increaseLvl } from './pet.js'
 
 export function showPlayingBar(e){
-  const cardTexts = e.target.nextElementSibling;
-  const songCard = e.target.closest('.songCard')
+  const songCard = e.target.closest('.songCard');
+  const cardImg = e.target.parentElement.querySelector('.songImgDiv')
+  console.log(cardImg)
   const songLength = songCard.querySelector('.songDuration').textContent;
 
   //math....
@@ -181,11 +184,12 @@ export function showPlayingBar(e){
     `;
 
   if(e.target.innerHTML === '▶'){
-    cardTexts.insertAdjacentHTML('afterend', html);
+    cardImg.insertAdjacentHTML('afterend', html);
     e.target.innerHTML = '||';
-    twinkleSong.play();                                                             
+    twinkleSong.play();  
+    
+    playGif();
 
-    const outerDiv = document.querySelector('.outsideBarDiv');
     const innerDiv = document.querySelector('.insideBarDiv');
 
     let width = 0;
@@ -199,6 +203,9 @@ export function showPlayingBar(e){
         if(seconds % 3 === 0){
           increaseLvl();
         }
+        if(seconds % 4 === 0){
+          increaseHappiness();
+        }
 
       }, 1000);
     }
@@ -207,6 +214,7 @@ export function showPlayingBar(e){
     e.target.innerHTML = '▶';
     twinkleSong.pause();
     
+    stopGif();
     const outerDiv = document.querySelector('.outsideBarDiv');
     const innerDiv = document.querySelector('.insideBarDiv');
     outerDiv.remove();

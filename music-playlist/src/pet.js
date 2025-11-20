@@ -121,6 +121,22 @@ export function increaseLvl(){
         levelText.innerHTML = level;
     }
 }
+let happyLvl = 0;
+export function increaseHappiness(){
+    console.log(happyLvl)
+    const happyBar = document.querySelector('#happinessBar');
+    const happyBars = happyBar.querySelectorAll('.individualBar');
+
+    if(happyLvl < happyBars.length){
+        happyBars[happyLvl].style.backgroundColor = '#000000';
+        happyLvl++;
+    }
+}
+export function playGif(){
+    const petImg = document.querySelector('.selectedPet');
+    petImg.src = 'src/' + petImg.dataset.animal + '.gif';
+    console.log(petImg.src)
+}
 /*  one min of song -> happy++
     one song added -> hunger++
     when song is playing -> lvl progressively increases and activate gif

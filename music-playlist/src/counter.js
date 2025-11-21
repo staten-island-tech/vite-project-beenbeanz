@@ -2,7 +2,7 @@ import { increaseHunger } from './pet.js'
 import { increaseLvl } from './pet.js';
 import { increaseHappiness } from './pet.js';
 import { playGif } from './pet.js';
-import { stopGif } from './pet.js;'
+import { stopGif } from './pet.js'
 
 
 export const songsArr = [
@@ -70,10 +70,13 @@ export function submitPlaylistForm(){
     const element = playlistForm[i];
       if (element.name && element.value) { 
         obj[element.name] = element.value;
+        
       }
   }
   allPlaylists.push(obj);
-
+  console.log(allPlaylists)
+  localStorage.setItem('playlistName', obj['playlistName'])
+ 
   const latestPlaylist = allPlaylists[allPlaylists.length - 1];
   playlistTabs.insertAdjacentHTML('beforeend', `
     <button class="playlist" data-index="${allPlaylists.length - 1}">${latestPlaylist.playlistName}</button>

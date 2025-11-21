@@ -135,9 +135,11 @@ export function increaseHappiness(){
 export function playGif(){
     const petImg = document.querySelector('.selectedPet');
     petImg.src = 'src/' + petImg.dataset.animal + '.gif';
-    console.log(petImg.src)
 }
-export function stopGif(){}
+export function stopGif(){
+    const petImg = document.querySelector('.selectedPet');
+    petImg.src = 'src/' + petImg.dataset.animal + '.png';
+}
 /*  one min of song -> happy++
     one song added -> hunger++
     when song is playing -> lvl progressively increases and activate gif

@@ -1,6 +1,5 @@
 export let pet = '';
 const petContainer = document.querySelector('.petContainer');
-
 export function selectPet(e){    
     pet = e.target;
     pet.classList.remove('petImg');
@@ -20,6 +19,7 @@ export function selectPet(e){
 
     let interval = 0;
     setInterval(displayPetDialogue, 1000);
+    const playPauseBtns = document.querySelectorAll('.playPauseBtn');
 
     function displayPetDialogue(){
         if(interval === 0){
@@ -57,6 +57,11 @@ export function selectPet(e){
             petDialogues.forEach(petDiag => petDiag.remove())
         }
         else if(interval === 7){
+            playPauseBtns.forEach(btn => {
+                btn.style.pointerEvents = 'all';
+                console.log(btn)
+            });
+
             petContainer.insertAdjacentHTML('beforeend', `
                 <p class="progressBarLabel">Level <span class='level'>0</span></p>
                 <div class="petProgressBars" id="levelBar">

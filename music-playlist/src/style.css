@@ -11,12 +11,17 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  --color-primary: rgba(255, 255, 255, 0.267);
 
   --dark-text: #d8d8d8;
-  --dark-buttons: #000000;
   --dark-primary: #3432579f;
+  --dark-slider: #474849;
+
+  --light-text: #333333;
 }
+.lightModeText{
+  color: var(--light-text);
+}
+
 .h1Header,.h2Header{
   color: var(--dark-text);
   text-align: center;
@@ -76,6 +81,7 @@ section {
   color: var(--dark-text);
   display: block;
   margin: auto 0;
+  pointer-events: none;
 }
 .songTexts{
   color: var(--dark-text);
@@ -129,9 +135,11 @@ section {
 .petImg{
   padding: 5px;
   border-radius: 13px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .petImg:hover{
   transform: scale(1.2);
+  
 }
 .selectedPet{
   pointer-events: none;
@@ -211,10 +219,10 @@ section {
   transition: .4s;
 }
 input:checked + .slider {
-  background-color: #474849;
+  background-color: var(--dark-slider);
 }
 input:focus + .slider {
-  box-shadow: 0 0 1px #474849;
+  box-shadow: 0 0 1px var(--dark-slider);
 }
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);

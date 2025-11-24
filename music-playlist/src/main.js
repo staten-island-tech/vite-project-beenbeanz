@@ -36,3 +36,8 @@ const playPauseBtns = document.querySelectorAll('.playPauseBtn');
 playPauseBtns.forEach(btn => btn.addEventListener('click', (e) => {
     showPlayingBar(e);
 }))
+
+const slider = document.querySelector('.switchCheckbox');
+console.log(slider)
+if(slider.checked === false) {console.log('poo')}
+else console.log('oifshf')

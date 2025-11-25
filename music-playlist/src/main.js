@@ -38,6 +38,6 @@ playPauseBtns.forEach(btn => btn.addEventListener('click', (e) => {
 }))
 
 const slider = document.querySelector('.switchCheckbox');
-console.log(slider)
-if(slider.checked === false) {console.log('poo')}
-else console.log('oifshf')
+slider.addEventListener('change', () => {
+  console.log('CHECKED?', slider.checked);
+});

@@ -70,12 +70,10 @@ export function submitPlaylistForm(){
     const element = playlistForm[i];
       if (element.name && element.value) { 
         obj[element.name] = element.value;
-        
       }
   }
   allPlaylists.push(obj);
   console.log(allPlaylists)
-  localStorage.setItem('playlistName', obj['playlistName'])
  
   const latestPlaylist = allPlaylists[allPlaylists.length - 1];
   playlistTabs.insertAdjacentHTML('beforeend', `
@@ -90,7 +88,23 @@ export function submitPlaylistForm(){
   playlistForm.style.display = 'none';
 
   displayPlaylist(allPlaylists[allPlaylists.length - 1]);
+  console.log(allPlaylists)
+
+  //LOCAL STORAGE
+  allPlaylists.forEach(playlist => localStorage.setItem(`${playlist.playlistName}`, ''))
 }
+
+
+
+
+
+
+
+
+
+
+
+
 const addSongsForm = document.querySelector('.addSongsForm');
 //DISPLAY NEW PLAYLIST
 export function displayPlaylist(playlist){
@@ -111,6 +125,11 @@ export function displayPlaylist(playlist){
   songs.forEach(song => {
     if(song.playlistForSong === playlist.playlistName){
       renderSongAdded(song)
+      localStorage.setItem(`${playlist.playlistName}`, 
+       Object.keys(song).forEach(key => {
+        console.log(`${key}: ${song[key]}`);
+      })
+      )
     }
   })
 }
@@ -144,7 +163,7 @@ export function submitSongForm(){
 
   //add song to playlist
   addSongsForm.style.display = 'none';
-  console.log(obj.playlistForSong);
+  console.log(songs);
   renderSongs(songsArr, initialSongsContainer)
   increaseHunger();
 }

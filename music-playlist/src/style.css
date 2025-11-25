@@ -206,6 +206,7 @@ section {
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+  pointer-events: none;
 }
 .slider:before {
   position: absolute;

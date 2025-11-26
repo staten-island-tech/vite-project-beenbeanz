@@ -3,8 +3,7 @@ import { increaseLvl } from './pet.js';
 import { increaseHappiness } from './pet.js';
 import { playGif } from './pet.js';
 import { stopGif } from './pet.js'
-
-
+let test = localStorage.getItem("test")
 export const songsArr = [
   { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "src/hte.png" },
   { name: "Bittersuite", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:58", image: "src/hmhas.png" },
@@ -91,7 +90,8 @@ export function submitPlaylistForm(){
   console.log(allPlaylists)
 
   //LOCAL STORAGE
-  allPlaylists.forEach(playlist => localStorage.setItem(`${playlist.playlistName}`, ''))
+  allPlaylists.forEach(playlist => localStorage.setItem(`${playlist.playlistName}`, JSON.stringify(playlist)))
+  console.log(localStorage.getItem("test"))
 }
 
 
@@ -125,11 +125,7 @@ export function displayPlaylist(playlist){
   songs.forEach(song => {
     if(song.playlistForSong === playlist.playlistName){
       renderSongAdded(song)
-      localStorage.setItem(`${playlist.playlistName}`, 
-       Object.keys(song).forEach(key => {
-        console.log(`${key}: ${song[key]}`);
-      })
-      )
+      localStorage.setItem(`${playlist.playlistName}`, Object.keys(song).forEach(key => {(`${key}: ${song[key]}`);}))
     }
   })
 }
@@ -141,7 +137,6 @@ playlistTabs.addEventListener('click', (e) => {
   }
 });
 
-
 export function showSongForm(){
   initialSongsContainer.innerHTML = '';
   addSongsForm.style.display = 'block';
@@ -149,7 +144,6 @@ export function showSongForm(){
 }
 
 //ADDING SONGS
-
 export function submitSongForm(){
   initialSongsContainer.innerHTML = ''
   const obj = {};

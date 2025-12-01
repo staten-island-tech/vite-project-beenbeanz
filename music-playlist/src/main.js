@@ -39,5 +39,20 @@ playPauseBtns.forEach(btn => btn.addEventListener('click', (e) => {
 
 const slider = document.querySelector('.switchCheckbox');
 slider.addEventListener('change', () => {
+  //ELEMS
+  const header = document.querySelector('.header')
+  const petHeader = document.querySelector('.h4Header')
+  const elems = [];
+  elems.push(header, petHeader)
+
+
+  if(slider.checked === true){
+    //light mode
+    document.body.style.backgroundColor = 'white'
+    elems.forEach(elem => elem.classList.add('.lightModeText'))
+  } else {
+    //dark mode
+    document.body.style.backgroundColor = '#051c49'
+  }
   console.log('CHECKED?', slider.checked);
 });

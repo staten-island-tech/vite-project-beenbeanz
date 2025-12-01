@@ -17,18 +17,21 @@
   --dark-slider: #474849;
 
   --light-text: #333333;
+  --light-primary: #e4e4e4;
 }
 .lightModeText{
   color: var(--light-text);
 }
-
+.lightModePrimary{
+  background: var(--light-primary);
+}
 .h1Header,.h2Header{
   color: var(--dark-text);
   text-align: center;
 }
 .h1Header{
   font-size: 2.5rem;
-  
+  padding: 0;
 }
 button{
   font-family: 'Fuzzy Bubbles';
@@ -97,16 +100,60 @@ section {
   width: 225px;
   height: 225px;
 }
-.inputBox{
-  border: 2px solid rgb(255, 255, 255);
+.addPlaylistForm {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;       /* space between fields */
+  width: 300px;  
+}
+.formHeader {
+  text-align: center;
+  color: var(--dark-text);
+  margin-bottom: 10px;
+}
+.inputBox {
+  border: 2px solid rgb(255,255,255);
+  border-radius: 7px;
+  padding: 5px;
+}
+.submitFormBtn {
+  margin-top: 10px;
+  width: 120px;
+  align-self: center;
+}
+.addPlaylistForm label{
+  margin-top: 10px;
+}
+.addPlaylistForm .inputBox, 
+.addPlaylistForm select{
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
 }
 .form{
   color: var(--dark-text);
-  
 }
-.inputBox{
-  border-radius: 7px;
+.addSongsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;       /* space between fields */
+  width: 300px;    /* optional: keeps everything a nice width */
 }
+
+.addSongsForm label {
+  margin-top: 10px;
+}
+
+.addSongsForm .inputBox,
+.addSongsForm select {
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+
+
 .playlistHeader{
   color: var(--dark-text);
   text-align: center;

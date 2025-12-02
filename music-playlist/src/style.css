@@ -5,7 +5,6 @@
 
   color-scheme: light dark;
   color: rgba(0, 0, 0, 0.87);
-  background-color: #051c49;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -19,11 +18,20 @@
   --light-text: #333333;
   --light-primary: #e4e4e4;
 }
+body{
+  background-color: #051c49;
+}
 .lightModeText{
   color: var(--light-text) !important;
 }
 .lightModePrimary{
   background: var(--light-primary);
+}
+.darkModeText{
+  color: var(--dark-text)  !important;
+}
+.darkModePrimary{
+  background-color: var(--dark-primary);
 }
 .h1Header,.h2Header{
   color: var(--dark-text);

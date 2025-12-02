@@ -3,7 +3,12 @@ import { increaseLvl } from './pet.js';
 import { increaseHappiness } from './pet.js';
 import { playGif } from './pet.js';
 import { stopGif } from './pet.js'
-let test = localStorage.getItem("test")
+export const allPlaylists = [];
+
+const savedLocalStorage = JSON.parse(localStorage.getItem("playlists"));
+if (savedLocalStorage) {
+  savedLocalStorage.forEach(pl => allPlaylists.push(pl));
+}
 export const songsArr = [
   { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "src/hte.png" },
   { name: "Bittersuite", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:58", image: "src/hmhas.png" },
@@ -27,6 +32,21 @@ export const songsArr = [
   { name: "Overheated", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:23", image: "src/hte.png" },
 ];
 
+const selectDropdown = document.querySelector('#selectDropdown');
+
+const playlistTabs = document.querySelector(".playlistTabs");
+  if(allPlaylists.length != 0){
+    allPlaylists.forEach((playlist, index) => {
+      playlistTabs.insertAdjacentHTML('beforeend',
+      `<button class='playlistBtn' data-index='${index}'>${playlist.playlistName}</button>`
+      )
+      selectDropdown.insertAdjacentHTML(
+        'beforeend',
+        `<option value="${playlist.playlistName}">${playlist.playlistName}</option>`
+      );
+    })
+   
+  }
 export function renderSongs(arr, element){
   playlistForm.style.display = 'none';
   addSongsForm.style.display = 'none';
@@ -46,8 +66,8 @@ export function renderSongs(arr, element){
           </div>
       </div>
     `;
-    element.innerHTML += html;
-});
+    element.innerHTML += html;  
+  });   
 }
 
 const initialSongsContainer = document.querySelector('.initialSongsContainer');
@@ -59,14 +79,7 @@ export function addPlaylistForm(){
   addSongsForm.style.display = 'none';
 }
 
-const selectDropdown = document.querySelector('#selectDropdown');
-const playlistTabs = document.querySelector(".playlistTabs");
-export const allPlaylists = [];
 
-const savedLocalStorage = JSON.parse(localStorage.getItem("playlists"));
-if (savedLocalStorage) {
-  savedLocalStorage.forEach(pl => allPlaylists.push(pl));
-}
 
 console.log(localStorage.getItem('playlists'))
 const songs = [];

@@ -62,6 +62,13 @@ export function addPlaylistForm(){
 const selectDropdown = document.querySelector('#selectDropdown');
 const playlistTabs = document.querySelector(".playlistTabs");
 export const allPlaylists = [];
+
+const savedLocalStorage = JSON.parse(localStorage.getItem("playlists"));
+if (savedLocalStorage) {
+  savedLocalStorage.forEach(pl => allPlaylists.push(pl));
+}
+
+console.log(localStorage.getItem('playlists'))
 const songs = [];
 export function submitPlaylistForm(){
   const obj = {};
@@ -71,6 +78,7 @@ export function submitPlaylistForm(){
         obj[element.name] = element.value;
       }
   }
+  obj.songs = [];
   allPlaylists.push(obj);
   console.log(allPlaylists)
  
@@ -90,19 +98,8 @@ export function submitPlaylistForm(){
   console.log(allPlaylists)
 
   //LOCAL STORAGE
-  allPlaylists.forEach(playlist => localStorage.setItem(`${playlist.playlistName}`, JSON.stringify(playlist)))
-  console.log(localStorage.getItem("test"))
+  localStorage.setItem("playlists", JSON.stringify(allPlaylists));
 }
-
-
-
-
-
-
-
-
-
-
 
 
 const addSongsForm = document.querySelector('.addSongsForm');
@@ -122,12 +119,7 @@ export function displayPlaylist(playlist){
       </div>  
   `)
 //<img class="songImage" src="${playlist.playlistImage}" alt="Playlist Cover">
-  songs.forEach(song => {
-    if(song.playlistForSong === playlist.playlistName){
-      renderSongAdded(song)
-      localStorage.setItem(`${playlist.playlistName}`, Object.keys(song).forEach(key => {(`${key}: ${song[key]}`);}))
-    }
-  })
+  playlist.songs.forEach(song => renderSongAdded(song))
 }
 
 playlistTabs.addEventListener('click', (e) => {
@@ -153,7 +145,11 @@ export function submitSongForm(){
         obj[element.name] = element.value;
       }
   }
-  songs.push(obj);
+  
+  const playlistName = obj.playlistForSong;
+  const playlist = allPlaylists.find(playlist => playlist.playlistName === playlistName)
+  playlist.songs.push(obj);
+  localStorage.setItem("playlists", JSON.stringify(allPlaylists));
 
   //add song to playlist
   addSongsForm.style.display = 'none';
@@ -176,7 +172,6 @@ function renderSongAdded(song){
     </div>
   `);
 }
-
 
 let timerInterval;
 let seconds = 0;

@@ -40,16 +40,30 @@ playPauseBtns.forEach(btn => btn.addEventListener('click', (e) => {
 const slider = document.querySelector('.switchCheckbox');
 slider.addEventListener('change', () => {
   //ELEMS
-  const header = document.querySelector('.header')
-  const petHeader = document.querySelector('.h4Header')
   const elems = [];
-  elems.push(header, petHeader)
-
+  const mainHeader = document.querySelector('.h1Header')
+  const petHeader = document.querySelector('.h4Header')
+  const secondHeader = document.querySelector('.h2Header')
+  const playlistBtns = document.querySelectorAll('.playlistBtn')
+  const songCardTexts = document.querySelectorAll('.songTexts')
+  const playPauseBtns = document.querySelectorAll('.playPauseBtn')
+  const formHeaders = document.querySelectorAll('.formHeader')
+  const forms = document.querySelectorAll('.form')
+  const submitFormBtns = document.querySelectorAll('.submitFormBtn')
+  const playlistHeaders = document.querySelectorAll('.playlistHeader')
+  const playlistHeaderTexts = document.querySelectorAll('.playlistHeaderTexts')
+  //const submitFormBtns = document.querySelectorAll('.submitFormBtn')
+  
+  
+  elems.push(mainHeader, petHeader, secondHeader, ...playlistBtns, ...songCardTexts,
+    ...playPauseBtns, ...forms, ...formHeaders, ...submitFormBtns, ...playlistHeaders,
+    ...playlistHeaderTexts);
+  console.log(elems)
 
   if(slider.checked === true){
     //light mode
     document.body.style.backgroundColor = 'white'
-    elems.forEach(elem => elem.classList.add('.lightModeText'))
+    elems.forEach(elem => elem.classList.add('lightModeText'))
   } else {
     //dark mode
     document.body.style.backgroundColor = '#051c49'

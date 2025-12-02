@@ -20,7 +20,7 @@
   --light-primary: #e4e4e4;
 }
 .lightModeText{
-  color: var(--light-text);
+  color: var(--light-text) !important;
 }
 .lightModePrimary{
   background: var(--light-primary);

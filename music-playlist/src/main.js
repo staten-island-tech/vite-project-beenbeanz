@@ -39,6 +39,7 @@ playPauseBtns.forEach(btn => btn.addEventListener('click', (e) => {
 
 const textElems = [];
 const backgroundElems = [];
+const borderElems = [];
 const mainHeader = document.querySelector('.h1Header')
 const petHeader = document.querySelector('.h4Header')
 const secondHeader = document.querySelector('.h2Header')
@@ -49,21 +50,33 @@ const forms = document.querySelectorAll('.form')
 const submitFormBtns = document.querySelectorAll('.submitFormBtn')
 const playlistHeaders = document.querySelectorAll('.playlistHeader')
 const playlistHeaderTexts = document.querySelectorAll('.playlistHeaderTexts')
+const songCards = document.querySelectorAll('.songCard');
 const slider = document.querySelector('.switchCheckbox');
+const petDialogues = document.querySelectorAll('.petDialogue');
+const petProgressBars = document.querySelectorAll('.petProgressBars');
 
 slider.addEventListener('change', () => {
   textElems.push(mainHeader, petHeader, secondHeader, ...playlistBtns, ...songCardTexts,
     ...playPauseBtns, ...forms, ...formHeaders, ...submitFormBtns, ...playlistHeaders,
-    ...playlistHeaderTexts);
-  console.log(textElems)
+    ...playlistHeaderTexts, ...petDialogues);
+
+  backgroundElems.push(...playlistBtns, ...songCards, ...playPauseBtns) 
+
+  borderElems.push(...petProgressBars)
 
   if(slider.checked === true){
     //light mode
     document.body.style.backgroundColor = 'white'
     textElems.forEach(elem => elem.classList.add('lightModeText'))
+    backgroundElems.forEach(elem => elem.classList.add('lightModePrimary'));
+    textElems.forEach(elem => elem.classList.remove('darkModeText'))
+    backgroundElems.forEach(elem => elem.classList.remove('darkModePrimary'));
   } else {
     //dark mode
     document.body.style.backgroundColor = '#051c49'
+    textElems.forEach(elem => elem.classList.add('darkModeText'))
+    backgroundElems.forEach(elem => elem.classList.add('darkModePrimary'));
+    textElems.forEach(elem => elem.classList.remove('lightModeText'))
+    backgroundElems.forEach(elem => elem.classList.remove('lightModePrimary'));
   }
-  console.log('CHECKED?', slider.checked);
 });

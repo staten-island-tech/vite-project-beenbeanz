@@ -80,7 +80,6 @@ export function addPlaylistForm(){
 }
 
 
-
 console.log(localStorage.getItem('playlists'))
 const songs = [];
 export function submitPlaylistForm(){

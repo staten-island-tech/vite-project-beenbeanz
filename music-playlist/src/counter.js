@@ -11,11 +11,11 @@ if (savedLocalStorage) {
   savedLocalStorage.forEach(playlist => allPlaylists.push(playlist));
 }
 export const songsArr = [
-  { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "src/hte.png" },
+  { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "src/guitar_songs.png" },
   { name: "Bittersuite", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:58", image: "src/hmhas.png" },
   { name: "i love you", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "4:51", image: "src/wwafawdwg.png" },
   { name: "Bad Guy", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:14", image: "src/wwafawdwg.png" },
-  { name: "Everything I Wanted", artist: "Billie Eilish", album: "Everything I wanted", length: "4:05", image: "src/everythingiwanted.png" },
+  { name: "Skinny", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:05", image: "src/hmhas.png" },
   { name: "When the Party's Over", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:17", image: "src/wwafawdwg.png" },
   { name: "Bury a Friend", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:13", image: "src/wwafawdwg.png" },
   { name: "All the Good Girls Go to Hell", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "2:48", image: "src/wwafawdwg.png" },
@@ -186,6 +186,10 @@ let seconds = 0;
 const twinkleSong = new Audio('./src/twinkle.mp3');
 twinkleSong.volume = .1;
 
+/*import { happyLvl } from './pet.js';
+import { hungerLvl } from './pet.js';
+import { level } from './pet.js';
+import { decreaseHappiness } from './pet.js';*/
 export function showPlayingBar(e){
   const songCard = e.target.closest('.songCard');
   const cardImg = e.target.parentElement.querySelector('.songImgDiv')
@@ -221,6 +225,8 @@ export function showPlayingBar(e){
         if(seconds % 4 === 0){
           increaseHappiness();
         }
+
+        //if(happyLvl === 5 && seconds % 4 === 0){decreaseHappiness();}
 
       }, 1000);
     }

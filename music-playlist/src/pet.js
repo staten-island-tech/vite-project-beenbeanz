@@ -1,13 +1,14 @@
 const petContainer = document.querySelector('.petContainer');
 export let pet = '';
-export function selectPet(e){    
+export function selectPet(e){   
+    // html 
     pet = e.target;
     pet.classList.remove('petImg');
     pet.classList.add('selectedPet');
     console.log(pet);
     petContainer.innerHTML = '';
     petContainer.insertAdjacentElement('beforeend', e.target);
-
+    //creating pet
     let petName = '';
     if(pet.dataset.animal === 'whiteCat') petName = 'White Jelly Lan';
     else if(pet.dataset.animal === 'grayCat') petName = 'Jerome Johnson';
@@ -94,10 +95,10 @@ export function selectPet(e){
     clearInterval(displayPetDialogue)
 }
 
-let hungerLvl = 0;
+export let hungerLvl = 0;
 let lvl = 0;
-let level = 0;
-let happyLvl = 0;
+export let level = 0;
+export let happyLvl = 0;
 
 export function increaseHunger(){
     const hungerBar = document.querySelector('#hungerBar');
@@ -124,6 +125,16 @@ export function increaseLvl(){
         levelText.innerHTML = level;
     }
 }
+
+/*export function decreaseHappiness(){
+    const happyBar = document.querySelector('#happinessBar');
+    const happyBars = happyBar.querySelectorAll('.individualBar');
+
+    if(happyLvl < happyBars.length){
+        happyBars[happyLvl].style.backgroundColor = 'transparent';
+        happyLvl--;
+    }
+}*/
 
 export function increaseHappiness(){
     const happyBar = document.querySelector('#happinessBar');

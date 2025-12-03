@@ -56,9 +56,10 @@ button{
   cursor: pointer;
   border: none;
   border-radius: 7px;
-  width: 150px;
+  width: fit-content;
   background-color: var(--dark-primary);
   color: var(--dark-text);
+  margin: 2px;
 }
 .bigContainer {
   display: flex;              
@@ -95,7 +96,7 @@ section {
   background-color: var(--dark-primary);
 }
 .playPauseBtn{
-  color: var(--light-text);
+  color: var(--dark-text);
   display: block;
   margin: auto 0;
   pointer-events: none;
@@ -197,7 +198,6 @@ section {
 }
 .petImg:hover{
   transform: scale(1.2);
-  
 }
 .selectedPet{
   pointer-events: none;
@@ -205,6 +205,8 @@ section {
   margin-bottom: 10px;
   padding: 5px;
   border-radius: 13px;
+  width: 167px;
+  height: 167px;
 }
 .petDialogue{
   color: var(--dark-text);

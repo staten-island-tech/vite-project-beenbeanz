@@ -60,10 +60,12 @@ slider.addEventListener('change', () => {
 
   const petDialogues = document.querySelectorAll('.petDialogue');
   const petProgressBars = document.querySelectorAll('.petProgressBars');
+  const progressBarLabels = document.querySelectorAll('.progressBarLabel');
+
 
   textElems.push(mainHeader, petHeader, secondHeader, ...playlistBtns, ...songCardTexts,
     ...playPauseBtns, ...forms, ...formHeaders, ...submitFormBtns, ...playlistHeaders,
-    ...playlistHeaderTexts, ...petDialogues);
+    ...playlistHeaderTexts, ...petDialogues, ...progressBarLabels);
 
   backgroundElems.push(...playlistBtns, ...songCards, ...playPauseBtns) 
 

@@ -3,11 +3,12 @@ import { increaseLvl } from './pet.js';
 import { increaseHappiness } from './pet.js';
 import { playGif } from './pet.js';
 import { stopGif } from './pet.js'
-export const allPlaylists = [];
 
+//RETRIEVE PREVIOUS SAVED PLAYLISTS
+export const allPlaylists = [];
 const savedLocalStorage = JSON.parse(localStorage.getItem("playlists"));
 if (savedLocalStorage) {
-  savedLocalStorage.forEach(pl => allPlaylists.push(pl));
+  savedLocalStorage.forEach(playlist => allPlaylists.push(playlist));
 }
 export const songsArr = [
   { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "src/hte.png" },
@@ -33,20 +34,23 @@ export const songsArr = [
 ];
 
 const selectDropdown = document.querySelector('#selectDropdown');
-
 const playlistTabs = document.querySelector(".playlistTabs");
-  if(allPlaylists.length != 0){
-    allPlaylists.forEach((playlist, index) => {
-      playlistTabs.insertAdjacentHTML('beforeend',
+const initialSongsContainer = document.querySelector('.initialSongsContainer');
+const playlistForm = document.querySelector(".addPlaylistForm");
+const addSongsForm = document.querySelector('.addSongsForm');
+
+
+if(allPlaylists.length != 0){
+  allPlaylists.forEach((playlist, index) => {
+    playlistTabs.insertAdjacentHTML('beforeend',
       `<button class='playlistBtn' data-index='${index}'>${playlist.playlistName}</button>`
-      )
-      selectDropdown.insertAdjacentHTML(
-        'beforeend',
-        `<option value="${playlist.playlistName}">${playlist.playlistName}</option>`
-      );
-    })
-   
-  }
+    )
+    selectDropdown.insertAdjacentHTML('beforeend',
+      `<option value="${playlist.playlistName}">${playlist.playlistName}</option>`
+    );
+  })
+}
+
 export function renderSongs(arr, element){
   playlistForm.style.display = 'none';
   addSongsForm.style.display = 'none';
@@ -70,17 +74,12 @@ export function renderSongs(arr, element){
   });   
 }
 
-const initialSongsContainer = document.querySelector('.initialSongsContainer');
-const playlistForm = document.querySelector(".addPlaylistForm");
-
 export function addPlaylistForm(){
   initialSongsContainer.innerHTML = '';
   playlistForm.style.display = 'block';
   addSongsForm.style.display = 'none';
 }
 
-
-console.log(localStorage.getItem('playlists'))
 const songs = [];
 export function submitPlaylistForm(){
   const obj = {};
@@ -107,14 +106,12 @@ export function submitPlaylistForm(){
   playlistForm.style.display = 'none';
 
   displayPlaylist(allPlaylists[allPlaylists.length - 1]);
-  console.log(allPlaylists)
 
   //LOCAL STORAGE
   localStorage.setItem("playlists", JSON.stringify(allPlaylists));
 }
 
 
-const addSongsForm = document.querySelector('.addSongsForm');
 //DISPLAY NEW PLAYLIST
 export function displayPlaylist(playlist){
   initialSongsContainer.innerHTML = '';
@@ -130,7 +127,7 @@ export function displayPlaylist(playlist){
         </div>
       </div>  
   `)
-//<img class="songImage" src="${playlist.playlistImage}" alt="Playlist Cover">
+
   playlist.songs.forEach(song => renderSongAdded(song))
 }
 
@@ -165,13 +162,11 @@ export function submitSongForm(){
 
   //add song to playlist
   addSongsForm.style.display = 'none';
-  console.log(songs);
   renderSongs(songsArr, initialSongsContainer)
   increaseHunger();
 }
 
 function renderSongAdded(song){
-  console.log(song)
   initialSongsContainer.insertAdjacentHTML('beforeend', `
     <div class="songCard">
         <button class="playPauseBtn">▶</button>
@@ -185,6 +180,7 @@ function renderSongAdded(song){
   `);
 }
 
+
 let timerInterval;
 let seconds = 0;
 const twinkleSong = new Audio('./src/twinkle.mp3');
@@ -193,10 +189,8 @@ twinkleSong.volume = .1;
 export function showPlayingBar(e){
   const songCard = e.target.closest('.songCard');
   const cardImg = e.target.parentElement.querySelector('.songImgDiv')
-  console.log(cardImg)
   const songLength = songCard.querySelector('.songDuration').textContent;
 
-  //math....
   const songSeconds = Number(songLength.slice(-2)) + Number(songLength.slice(2,3,4) * 60);
   const interval = Number((100/songSeconds));
 
@@ -204,17 +198,15 @@ export function showPlayingBar(e){
     <div class="outsideBarDiv">
       <div class="insideBarDiv"></div>
     </div>
-    `;
+  `;
 
   if(e.target.innerHTML === '▶'){
     cardImg.insertAdjacentHTML('afterend', html);
     e.target.innerHTML = '||';
     twinkleSong.play();  
-    
     playGif();
 
     const innerDiv = document.querySelector('.insideBarDiv');
-
     let width = 0;
     if(!timerInterval){
       timerInterval = setInterval(() => {

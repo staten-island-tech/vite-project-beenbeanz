@@ -52,10 +52,15 @@ const playlistHeaders = document.querySelectorAll('.playlistHeader')
 const playlistHeaderTexts = document.querySelectorAll('.playlistHeaderTexts')
 const songCards = document.querySelectorAll('.songCard');
 const slider = document.querySelector('.switchCheckbox');
-const petDialogues = document.querySelectorAll('.petDialogue');
-const petProgressBars = document.querySelectorAll('.petProgressBars');
 
 slider.addEventListener('change', () => {
+  textElems.length = 0;
+  backgroundElems.length = 0;
+  borderElems.length = 0;
+
+  const petDialogues = document.querySelectorAll('.petDialogue');
+  const petProgressBars = document.querySelectorAll('.petProgressBars');
+
   textElems.push(mainHeader, petHeader, secondHeader, ...playlistBtns, ...songCardTexts,
     ...playPauseBtns, ...forms, ...formHeaders, ...submitFormBtns, ...playlistHeaders,
     ...playlistHeaderTexts, ...petDialogues);

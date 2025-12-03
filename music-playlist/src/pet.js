@@ -1,5 +1,5 @@
-export let pet = '';
 const petContainer = document.querySelector('.petContainer');
+export let pet = '';
 export function selectPet(e){    
     pet = e.target;
     pet.classList.remove('petImg');
@@ -9,7 +9,6 @@ export function selectPet(e){
     petContainer.insertAdjacentElement('beforeend', e.target);
 
     let petName = '';
-    console.log(pet.dataset.animal)
     if(pet.dataset.animal === 'whiteCat') petName = 'White Jelly Lan';
     else if(pet.dataset.animal === 'grayCat') petName = 'Jerome Johnson';
     else if(pet.dataset.animal === 'orangeCat') petName = 'Sassy Sally';
@@ -59,7 +58,6 @@ export function selectPet(e){
         else if(interval === 7){
             playPauseBtns.forEach(btn => {
                 btn.style.pointerEvents = 'all';
-                console.log(btn)
             });
 
             petContainer.insertAdjacentHTML('beforeend', `
@@ -97,6 +95,10 @@ export function selectPet(e){
 }
 
 let hungerLvl = 0;
+let lvl = 0;
+let level = 0;
+let happyLvl = 0;
+
 export function increaseHunger(){
     const hungerBar = document.querySelector('#hungerBar');
     const hungerBars = hungerBar.querySelectorAll('.individualBar');
@@ -107,18 +109,14 @@ export function increaseHunger(){
     }
 }
 
-let lvl = 0;
-let level = 0;
 export function increaseLvl(){
     const lvlBar = document.querySelector('#levelBar');
     const lvlBars = lvlBar.querySelectorAll('.individualBar');
     const levelText = document.querySelector('.level');
     
-    
     if(lvl < lvlBars.length){
         lvlBars[lvl].style.backgroundColor = '#000000';
         lvl++;
-        console.log(lvl)
     } else if(lvl >= lvlBars.length){
         lvlBars.forEach(bar => bar.style.backgroundColor = 'transparent');
         lvl = 0;
@@ -126,9 +124,8 @@ export function increaseLvl(){
         levelText.innerHTML = level;
     }
 }
-let happyLvl = 0;
+
 export function increaseHappiness(){
-    console.log(happyLvl)
     const happyBar = document.querySelector('#happinessBar');
     const happyBars = happyBar.querySelectorAll('.individualBar');
 
@@ -137,14 +134,17 @@ export function increaseHappiness(){
         happyLvl++;
     }
 }
+
 export function playGif(){
     const petImg = document.querySelector('.selectedPet');
     petImg.src = 'src/' + petImg.dataset.animal + '.gif';
 }
+
 export function stopGif(){
     const petImg = document.querySelector('.selectedPet');
     petImg.src = 'src/' + petImg.dataset.animal + '.png';
 }
+
 /*  one min of song -> happy++
     one song added -> hunger++
     when song is playing -> lvl progressively increases and activate gif

@@ -1,14 +1,7 @@
 const petContainer = document.querySelector('.petContainer');
 export let pet = '';
-export function selectPet(e){   
-    // html 
-    pet = e.target;
-    pet.classList.remove('petImg');
-    pet.classList.add('selectedPet');
-    console.log(pet);
-    petContainer.innerHTML = '';
-    petContainer.insertAdjacentElement('beforeend', e.target);
-    //creating pet
+
+function namePet(pet){
     let petName = '';
     if(pet.dataset.animal === 'whiteCat') petName = 'White Jelly Lan';
     else if(pet.dataset.animal === 'grayCat') petName = 'Jerome Johnson';
@@ -16,82 +9,94 @@ export function selectPet(e){
     else if(pet.dataset.animal === 'dog') petName = 'Twerking Terry';
     else if(pet.dataset.animal === 'lizard') petName = 'Beila Hu';
     else if(pet.dataset.animal === 'polar') petName = 'Michael Whalen';
-
+    return petName;
+}
+function displayPetDialogue(){
     let interval = 0;
-    setInterval(displayPetDialogue, 1000);
-    const playPauseBtns = document.querySelectorAll('.playPauseBtn');
-
-    function displayPetDialogue(){
-        if(interval === 0){
-            petContainer.insertAdjacentHTML('beforeend', `
-                <p class='petDialogue'>Hi! My name is ${petName}!</p>    
-            `);
-        }
-        else if(interval === 1){
-            petContainer.insertAdjacentHTML('beforeend', `
-                <p class='petDialogue'>I am very needy and I need to be leveled up.</p>    
-            `);
-        }
-        else if(interval === 2){
-            petContainer.insertAdjacentHTML('beforeend', `
-                <p class='petDialogue'>Add songs to fill up my hungry stomach.</p>    
-            `);
-        }
-        else if(interval === 3){
-            petContainer.insertAdjacentHTML('beforeend', `
-                <p class='petDialogue'>For each minute of a song that you add, it'll fill up my happiness level by 1.</p>    
-            `);
-        }
-        else if(interval === 4){
-            petContainer.insertAdjacentHTML('beforeend', `
-                <p class='petDialogue'>When you play a nonexist song that doesn't have any audio, it'll also increase my level</p>    
-            `);
-        }
-        else if(interval === 5){
-            petContainer.insertAdjacentHTML('beforeend', `
-                <p class='petDialogue'>Once I get to level 67, a special guest will appear and do his signature 67 dance!</p>    
-            `);
-        }
-        else if(interval === 6){
-            const petDialogues = document.querySelectorAll('.petDialogue');
-            petDialogues.forEach(petDiag => petDiag.remove())
-        }
-        else if(interval === 7){
-            playPauseBtns.forEach(btn => {
-                btn.style.pointerEvents = 'all';
-            });
-
-            petContainer.insertAdjacentHTML('beforeend', `
-                <p class="progressBarLabel">Level <span class='level'>0</span></p>
-                <div class="petProgressBars" id="levelBar">
-                <div class="individualBar" style="background-color: none;"></div>
-                <div class="individualBar" style="background-color: none;"></div>
-                <div class="individualBar" style="background-color: none;"></div>
-                <div class="individualBar" style="background-color: none;"></div>
-                <div class="individualBar" style="background-color: none;"></div>
-                </div>
-
-                <p class="progressBarLabel">Hunger Bar</p>
-                <div class="petProgressBars" id="hungerBar">
-                    <div class="individualBar" style="background-color: none;"></div>
-                    <div class="individualBar" style="background-color: none;"></div>
-                    <div class="individualBar" style="background-color: none;"></div>
-                    <div class="individualBar" style="background-color: none;"></div>
-                    <div class="individualBar" style="background-color: none;"></div>
-                </div>
-
-                <p class="progressBarLabel">Happiness Bar</p>
-                <div class="petProgressBars" id="happinessBar">
-                    <div class="individualBar" style="background-color: none;"></div>
-                    <div class="individualBar" style="background-color: none;"></div>
-                    <div class="individualBar" style="background-color: none;"></div>
-                    <div class="individualBar" style="background-color: none;"></div>
-                    <div class="individualBar" style="background-color: none;"></div>
-                </div>
-            `);
-        }
-        interval++;
+    if(interval === 0){
+        petContainer.insertAdjacentHTML('beforeend', `
+            <p class='petDialogue'>Hi! My name is ${petName}!</p>    
+        `);
     }
+    else if(interval === 1){
+        petContainer.insertAdjacentHTML('beforeend', `
+            <p class='petDialogue'>I am very needy and I need to be leveled up.</p>    
+        `);
+    }
+    else if(interval === 2){
+        petContainer.insertAdjacentHTML('beforeend', `
+            <p class='petDialogue'>Add songs to fill up my hungry stomach.</p>    
+        `);
+    }
+    else if(interval === 3){
+        petContainer.insertAdjacentHTML('beforeend', `
+            <p class='petDialogue'>For each minute of a song that you add, it'll fill up my happiness level by 1.</p>    
+        `);
+    }
+    else if(interval === 4){
+        petContainer.insertAdjacentHTML('beforeend', `
+            <p class='petDialogue'>When you play a nonexist song that doesn't have any audio, it'll also increase my level</p>    
+        `);
+    }
+    else if(interval === 5){
+        petContainer.insertAdjacentHTML('beforeend', `
+            <p class='petDialogue'>Once I get to level 67, a special guest will appear and do his signature 67 dance!</p>    
+        `);
+    }
+    else if(interval === 6){
+        const petDialogues = document.querySelectorAll('.petDialogue');
+        petDialogues.forEach(petDiag => petDiag.remove())
+    }
+    else if(interval === 7){
+        const playPauseBtns = document.querySelectorAll('.playPauseBtn');
+        playPauseBtns.forEach(btn => {
+            btn.style.pointerEvents = 'all';
+        });
+
+        petContainer.insertAdjacentHTML('beforeend', `
+            <p class="progressBarLabel">Level <span class='level'>0</span></p>
+            <div class="petProgressBars" id="levelBar">
+            <div class="individualBar" style="background-color: none;"></div>
+            <div class="individualBar" style="background-color: none;"></div>
+            <div class="individualBar" style="background-color: none;"></div>
+            <div class="individualBar" style="background-color: none;"></div>
+            <div class="individualBar" style="background-color: none;"></div>
+            </div>
+
+            <p class="progressBarLabel">Hunger Bar</p>
+            <div class="petProgressBars" id="hungerBar">
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+            </div>
+
+            <p class="progressBarLabel">Happiness Bar</p>
+            <div class="petProgressBars" id="happinessBar">
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+                <div class="individualBar" style="background-color: none;"></div>
+            </div>
+        `);
+    }
+    interval++;
+}
+export function selectPet(e){   
+    // html 
+    pet = e.target;
+    pet.classList.remove('petImg');
+    pet.classList.add('selectedPet');
+    petContainer.innerHTML = '';
+    petContainer.insertAdjacentElement('beforeend', e.target);
+
+    //creating pet
+    namePet(pet)
+
+    setInterval(displayPetDialogue, 1000);
+    displayPetDialogue();
     clearInterval(displayPetDialogue)
 }
 
@@ -109,6 +114,8 @@ export function increaseHunger(){
         hungerLvl++;
     }
 }
+
+export function decreaseHunger(){}
 
 export function increaseLvl(){
     const lvlBar = document.querySelector('#levelBar');

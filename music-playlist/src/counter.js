@@ -1,7 +1,7 @@
 import { increaseHunger } from './pet.js'
 import { increaseLvl } from './pet.js';
 import { increaseHappiness } from './pet.js';
-import { decreaseHunger } from './pet.js';
+//import { decreaseHunger } from './pet.js';
 import { playGif } from './pet.js';
 import { stopGif } from './pet.js'
 
@@ -188,8 +188,8 @@ const twinkleSong = new Audio('./src/twinkle.mp3');
 twinkleSong.volume = .1;
 
 import { happyLvl } from './pet.js';
-import { hungerLvl } from './pet.js';
-import { level } from './pet.js';
+//import { hungerLvl } from './pet.js';
+//import { level } from './pet.js';
 import { decreaseHappiness } from './pet.js';
 export function showPlayingBar(e){
   const songCard = e.target.closest('.songCard');
@@ -226,7 +226,6 @@ export function showPlayingBar(e){
         if(seconds % 4 === 0){
           increaseHappiness();
         }
-        //if(happyLvl === 5 && seconds % 4 === 0){decreaseHappiness();}
       }, 1000);
     }
   } else {
@@ -241,13 +240,9 @@ export function showPlayingBar(e){
     clearInterval(timerInterval);
     timerInterval = null;
     seconds = 0;
-  }
-}
 
-let hungerInterval;
-if(hungerLvl === 5){
-  if(!hungerInterval){
-    
+    if(happyLvl === 5){
+      decreaseHappiness();
+    }
   }
-  console.log("hunger lvl is 5")
 }

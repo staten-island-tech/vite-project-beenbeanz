@@ -118,16 +118,16 @@ export function increaseHunger(){
     }
 }
 let hungerInterval;
-let seconds = 0;
+let hungerIntervalSeconds = 0;
 export function decreaseHunger(){
     const hungerBar = document.querySelector('#hungerBar');
     const hungerBars = hungerBar.querySelectorAll('.individualBar');
     if(!hungerInterval) return;
 
     hungerInterval = setInterval(() => {
-        seconds++;
+        hungerIntervalSeconds++;
         
-        if(seconds % 3 === 0 && hungerLvl > 0){
+        if(hungerIntervalSeconds % 3 === 0 && hungerLvl > 0){
             hungerBars[hungerLvl - 1].style.backgroundColor = 'transparent'
             hungerLvl--;
         }
@@ -160,8 +160,22 @@ export function increaseHappiness(){
     }
 }
 
+let happinessInterval;
+let happinessIntervalSeconds = 0;
 export function decreaseHappiness(){
-    
+    const happyBar = document.querySelector('#happinessBar');
+    const happyBars = happyBar.querySelectorAll('.individualBar');
+
+    if(!happinessInterval) return;
+
+    happinessInterval = setInterval(() => {
+        happinessIntervalSeconds++;
+        
+        if(happinessIntervalSeconds % 4 === 0 && happyLvl > 0){
+            happyBars[happyLvl - 1].style.backgroundColor = 'transparent'
+            happyLvl--;
+        }
+    }, 1000);
 }
 
 export function playGif(){

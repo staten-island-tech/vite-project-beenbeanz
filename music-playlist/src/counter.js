@@ -4,6 +4,7 @@ import { increaseHappiness } from './pet.js';
 //import { decreaseHunger } from './pet.js';
 import { playGif } from './pet.js';
 import { stopGif } from './pet.js'
+import { attachPlayListeners } from './main.js';
 
 //RETRIEVE PREVIOUS SAVED PLAYLISTS
 export const allPlaylists = [];
@@ -41,6 +42,7 @@ const playlistForm = document.querySelector(".addPlaylistForm");
 const addSongsForm = document.querySelector('.addSongsForm');
 
 
+
 if(allPlaylists.length != 0){
   allPlaylists.forEach((playlist, index) => {
     playlistTabs.insertAdjacentHTML('beforeend',
@@ -72,7 +74,9 @@ export function renderSongs(arr, element){
       </div>
     `;
     element.innerHTML += html;  
-  });   
+  });  
+
+  attachPlayListeners(initialSongsContainer);
 }
 
 export function addPlaylistForm(){
@@ -164,6 +168,7 @@ export function submitSongForm(){
   //add song to playlist
   addSongsForm.style.display = 'none';
   renderSongs(songsArr, initialSongsContainer)
+  attachPlayListeners();
   increaseHunger();
 }
 
@@ -188,8 +193,6 @@ const twinkleSong = new Audio('./src/twinkle.mp3');
 twinkleSong.volume = .1;
 
 import { happyLvl } from './pet.js';
-//import { hungerLvl } from './pet.js';
-//import { level } from './pet.js';
 import { decreaseHappiness } from './pet.js';
 export function showPlayingBar(e){
   const songCard = e.target.closest('.songCard');
@@ -231,7 +234,9 @@ export function showPlayingBar(e){
   } else {
     e.target.innerHTML = '▶';
     twinkleSong.pause();
-    
+    if(happyLvl === 5){
+      decreaseHappiness();
+    }
     stopGif();
     const outerDiv = document.querySelector('.outsideBarDiv');
     const innerDiv = document.querySelector('.insideBarDiv');
@@ -240,9 +245,5 @@ export function showPlayingBar(e){
     clearInterval(timerInterval);
     timerInterval = null;
     seconds = 0;
-
-    if(happyLvl === 5){
-      decreaseHappiness();
-    }
   }
 }

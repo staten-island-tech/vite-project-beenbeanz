@@ -32,10 +32,12 @@ document.querySelectorAll('.petImg').forEach(pet =>
         selectPet(e)
 }));
 
-const playPauseBtns = document.querySelectorAll('.playPauseBtn');
-playPauseBtns.forEach(btn => btn.addEventListener('click', (e) => {
-    showPlayingBar(e);
-}))
+export function attachPlayListeners() {
+  const playPauseBtns = document.querySelectorAll('.playPauseBtn');
+  playPauseBtns.forEach(btn => {
+    btn.addEventListener('click', e => {showPlayingBar(e)});
+  });
+}
 
 const textElems = [];
 const backgroundElems = [];
@@ -52,6 +54,8 @@ const playlistHeaders = document.querySelectorAll('.playlistHeader')
 const playlistHeaderTexts = document.querySelectorAll('.playlistHeaderTexts')
 const songCards = document.querySelectorAll('.songCard');
 const slider = document.querySelector('.switchCheckbox');
+const playPauseBtns = document.querySelectorAll('.playPauseBtn');
+
 
 slider.addEventListener('change', () => {
   const petDialogues = document.querySelectorAll('.petDialogue');

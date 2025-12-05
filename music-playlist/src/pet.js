@@ -104,7 +104,7 @@ export function selectPet(e){
 export let hungerLvl = 0;
 let lvl = 0;
 let level = 0;
-let happyLvl = 0;
+export let happyLvl = 0;
 
 export function increaseHunger(){
     const hungerBar = document.querySelector('#hungerBar');
@@ -122,7 +122,7 @@ let hungerIntervalSeconds = 0;
 export function decreaseHunger(){
     const hungerBar = document.querySelector('#hungerBar');
     const hungerBars = hungerBar.querySelectorAll('.individualBar');
-    if(!hungerInterval) return;
+    if(hungerInterval) return;
 
     hungerInterval = setInterval(() => {
         hungerIntervalSeconds++;
@@ -130,6 +130,11 @@ export function decreaseHunger(){
         if(hungerIntervalSeconds % 3 === 0 && hungerLvl > 0){
             hungerBars[hungerLvl - 1].style.backgroundColor = 'transparent'
             hungerLvl--;
+        }
+
+        if (hungerLvl === 0) {
+            clearInterval(hungerInterval);
+            hungerInterval = null;
         }
     }, 1000);
 }
@@ -166,14 +171,20 @@ export function decreaseHappiness(){
     const happyBar = document.querySelector('#happinessBar');
     const happyBars = happyBar.querySelectorAll('.individualBar');
 
-    if(!happinessInterval) return;
+    if(happinessInterval) return;
 
     happinessInterval = setInterval(() => {
         happinessIntervalSeconds++;
         
         if(happinessIntervalSeconds % 4 === 0 && happyLvl > 0){
+            console.log(`${happyLvl}`)  
             happyBars[happyLvl - 1].style.backgroundColor = 'transparent'
             happyLvl--;
+        }
+
+        if (happyLvl === 0) {
+            clearInterval(happinessInterval);
+            happinessInterval = null;
         }
     }, 1000);
 }
@@ -187,7 +198,6 @@ export function stopGif(){
     const petImg = document.querySelector('.selectedPet');
     petImg.src = 'src/' + petImg.dataset.animal + '.png';
 }
-
 /*  one min of song -> happy++
     one song added -> hunger++
     when song is playing -> lvl progressively increases and activate gif

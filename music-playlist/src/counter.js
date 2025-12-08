@@ -3,6 +3,8 @@ import { increaseLvl } from './pet.js';
 import { increaseHappiness } from './pet.js';
 import { playGif } from './pet.js';
 import { stopGif } from './pet.js'
+import { happyLvl } from './pet.js';
+import { decreaseHappiness } from './pet.js';
 
 //RETRIEVE PREVIOUS SAVED PLAYLISTS
 export const allPlaylists = [];
@@ -10,29 +12,7 @@ const savedLocalStorage = JSON.parse(localStorage.getItem("playlists"));
 if (savedLocalStorage) {
   savedLocalStorage.forEach(playlist => allPlaylists.push(playlist));
 }
-export const songsArr = [
-  { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "src/guitar_songs.png" },
-  { name: "Bittersuite", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:58", image: "src/hmhas.png" },
-  { name: "i love you", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "4:51", image: "src/wwafawdwg.png" },
-  { name: "Bad Guy", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:14", image: "src/wwafawdwg.png" },
-  { name: "Skinny", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:05", image: "src/hmhas.png" },
-  { name: "When the Party's Over", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:17", image: "src/wwafawdwg.png" },
-  { name: "Bury a Friend", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:13", image: "src/wwafawdwg.png" },
-  { name: "All the Good Girls Go to Hell", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "2:48", image: "src/wwafawdwg.png" },
-  { name: "Therefore I Am", artist: "Billie Eilish", album: "Happier Than Ever", length: "2:54", image: "src/hte.png" },
-  { name: "No Time to Die", artist: "Billie Eilish", album: "No Time to Die (Single)", length: "4:02", image: "src/notimetodie.png" },
-  { name: "Your Power", artist: "Billie Eilish", album: "Happier Than Ever", length: "4:05", image: "src/hte.png" },
-  { name: "NDA", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:06", image: "src/hte.png" },
-  { name: "Lost Cause", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:28", image: "src/hte.png" },
-  { name: "Happier Than Ever", artist: "Billie Eilish", album: "Happier Than Ever", length: "4:57", image: "src/hte.png" },
-  { name: "My Future", artist: "Billie Eilish", album: "My Future (Single)", length: "3:28", image: "src/hte.png" },
-  { name: "Oxytocin", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:28", image: "src/hte.png" },
-  { name: "Getting Older", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:39", image: "src/hte.png" },
-  { name: "Male Fantasy", artist: "Billie Eilish", album: "Happier Than Ever", length: "4:49", image: "src/hte.png" },
-  { name: "I Didn't Change My Number", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:16", image: "src/hte.png" },
-  { name: "Overheated", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:23", image: "src/hte.png" },
-];
-
+//INSERTING SAVED PLAYLISTS, IF ANY
 const selectDropdown = document.querySelector('#selectDropdown');
 const playlistTabs = document.querySelector(".playlistTabs");
 const initialSongsContainer = document.querySelector('.initialSongsContainer');
@@ -50,11 +30,34 @@ if(allPlaylists.length != 0){
   })
 }
 
+export const songsArr = [
+  { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "src/guitar_songs.png" },
+  { name: "Bittersuite", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:58", image: "src/hmhas.png" },
+  { name: "i love you", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "4:51", image: "src/wwafawdwg.png" },
+  { name: "Bad Guy", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:14", image: "src/wwafawdwg.png" },
+  { name: "Skinny", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:05", image: "src/hmhas.png" },
+  { name: "When the Party's Over", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:17", image: "src/wwafawdwg.png" },
+  { name: "Bury a Friend", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:13", image: "src/wwafawdwg.png" },
+  { name: "All the Good Girls Go to Hell", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "2:48", image: "src/wwafawdwg.png" },
+  { name: "Therefore I Am", artist: "Billie Eilish", album: "Happier Than Ever", length: "2:54", image: "src/hte.png" },
+  { name: "Blue", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:02", image: "src/hmhas.png" },
+  { name: "Your Power", artist: "Billie Eilish", album: "Happier Than Ever", length: "4:05", image: "src/hte.png" },
+  { name: "NDA", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:06", image: "src/hte.png" },
+  { name: "Lost Cause", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:28", image: "src/hte.png" },
+  { name: "Happier Than Ever", artist: "Billie Eilish", album: "Happier Than Ever", length: "4:57", image: "src/hte.png" },
+  { name: "My Future", artist: "Billie Eilish", album: "My Future (Single)", length: "3:28", image: "src/hte.png" },
+  { name: "Oxytocin", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:28", image: "src/hte.png" },
+  { name: "Getting Older", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:39", image: "src/hte.png" },
+  { name: "Male Fantasy", artist: "Billie Eilish", album: "Happier Than Ever", length: "4:49", image: "src/hte.png" },
+  { name: "I Didn't Change My Number", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:16", image: "src/hte.png" },
+  { name: "Overheated", artist: "Billie Eilish", album: "Happier Than Ever", length: "3:23", image: "src/hte.png" },
+];
+
 export function attachPlayListeners() {
   const playPauseBtns = document.querySelectorAll('.playPauseBtn');
-  playPauseBtns.forEach(btn => btn.style.pointerEvents = 'all')
 
   playPauseBtns.forEach(btn => {
+    btn.style.pointerEvents = 'all';
     btn.addEventListener('click', e => {
       showPlayingBar(e);
     });
@@ -98,6 +101,8 @@ export function submitPlaylistForm(){
     const element = playlistForm[i];
       if (element.name && element.value) { 
         obj[element.name] = element.value;
+      } else if(!element.value){
+        element.value = '';
       }
   }
   obj.songs = [];
@@ -122,8 +127,14 @@ export function submitPlaylistForm(){
   localStorage.setItem("playlists", JSON.stringify(allPlaylists));
 }
 
-
 //DISPLAY NEW PLAYLIST
+playlistTabs.addEventListener('click', (e) => {
+  if(e.target.classList.contains('playlist')) {
+    const index = e.target.dataset.index;
+    displayPlaylist(allPlaylists[index]);
+  }
+});
+
 export function displayPlaylist(playlist){
   initialSongsContainer.innerHTML = '';
   playlistForm.style.display = 'none';
@@ -140,14 +151,8 @@ export function displayPlaylist(playlist){
   `)
 
   playlist.songs.forEach(song => renderSongAdded(song))
+  attachPlayListeners();
 }
-
-playlistTabs.addEventListener('click', (e) => {
-  if(e.target.classList.contains('playlist')) {
-    const index = e.target.dataset.index;
-    displayPlaylist(allPlaylists[index]);
-  }
-});
 
 export function showSongForm(){
   initialSongsContainer.innerHTML = '';
@@ -198,8 +203,7 @@ let seconds = 0;
 const twinkleSong = new Audio('./src/twinkle.mp3');
 twinkleSong.volume = .1;
 
-import { happyLvl } from './pet.js';
-import { decreaseHappiness } from './pet.js';
+
 export function showPlayingBar(e){
   const songCard = e.target.closest('.songCard');
   const cardImg = e.target.parentElement.querySelector('.songImgDiv')

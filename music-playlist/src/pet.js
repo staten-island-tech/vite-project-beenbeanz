@@ -1,6 +1,7 @@
 const petContainer = document.querySelector('.petContainer');
 import { attachPlayListeners } from './counter.js'
 export let pet = '';
+
 let petName = '';
 function namePet(pet){
     if(pet.dataset.animal === 'whiteCat') petName = 'White Jelly Lan';

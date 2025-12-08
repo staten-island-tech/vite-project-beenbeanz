@@ -17,14 +17,22 @@ allSongsBtn.addEventListener('click', () => {renderSongs(songsArr, document.quer
 const addPlaylistBtn = document.querySelector('.addPlaylistBtn');
 addPlaylistBtn.addEventListener('click', addPlaylistForm);
 
-const PlaylistSubmitBtn = document.querySelector("#PlaylistSubmitBtn");
-PlaylistSubmitBtn.addEventListener('click', submitPlaylistForm);
+const addPlaylistForm1 = document.querySelector(".addPlaylistForm");
+addPlaylistForm1.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitPlaylistForm();
+  }
+);
 
 const addSongBtn = document.querySelector('.addSongBtn');
 addSongBtn.addEventListener('click', showSongForm);
 
-const songSubmitBtn = document.querySelector("#songSubmitBtn");
-songSubmitBtn.addEventListener('click', submitSongForm);
+const addSongsForm = document.querySelector(".addSongsForm");
+addSongsForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitSongForm();
+  }
+);
 
 document.addEventListener('click', e => {
   if(e.target.classList.contains('playPauseBtn')){
@@ -37,6 +45,7 @@ document.querySelectorAll('.petImg').forEach(pet =>
         selectPet(e)
 }));
 
+//ok bro ik that this is inefficient but i figured that out after i finished manually doing all of this so next time this wont happen trust
 const textElems = [];
 const backgroundElems = [];
 const borderElems = [];

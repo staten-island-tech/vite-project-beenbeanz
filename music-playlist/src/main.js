@@ -26,6 +26,11 @@ addSongBtn.addEventListener('click', showSongForm);
 const songSubmitBtn = document.querySelector("#songSubmitBtn");
 songSubmitBtn.addEventListener('click', submitSongForm);
 
+document.addEventListener('click', e => {
+  if(e.target.classList.contains('playPauseBtn')){
+    showPlayingBar(e);
+  }
+});
 //pet.js
 document.querySelectorAll('.petImg').forEach(pet => 
     pet.addEventListener('click', (e) => {

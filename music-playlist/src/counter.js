@@ -42,7 +42,7 @@ const addSongsForm = document.querySelector('.addSongsForm');
 if(allPlaylists.length != 0){
   allPlaylists.forEach((playlist, index) => {
     playlistTabs.insertAdjacentHTML('beforeend',
-      `<button class='playlistBtn' data-index='${index}'>${playlist.playlistName}</button>`
+      `<button class='playlistBtn playlist' data-index='${index}'>${playlist.playlistName}</button>`
     )
     selectDropdown.insertAdjacentHTML('beforeend',
       `<option value="${playlist.playlistName}">${playlist.playlistName}</option>`
@@ -57,7 +57,6 @@ export function attachPlayListeners() {
   playPauseBtns.forEach(btn => {
     btn.addEventListener('click', e => {
       showPlayingBar(e);
-      console.log('oihfioajwoirj')
     });
   });
 }

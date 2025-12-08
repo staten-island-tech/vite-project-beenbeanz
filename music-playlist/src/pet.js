@@ -1,4 +1,5 @@
 const petContainer = document.querySelector('.petContainer');
+import { attachPlayListeners } from './counter.js'
 export let pet = '';
 let petName = '';
 function namePet(pet){
@@ -49,10 +50,7 @@ function displayPetDialogue(){
         petDialogues.forEach(petDiag => petDiag.remove())
     }
     else if(interval === 7){
-        const playPauseBtns = document.querySelectorAll('.playPauseBtn');
-        playPauseBtns.forEach(btn => {
-            btn.style.pointerEvents = 'all';
-        });
+        attachPlayListeners();
 
         petContainer.insertAdjacentHTML('beforeend', `
             <p class="progressBarLabel">Level <span class='level'>0</span></p>

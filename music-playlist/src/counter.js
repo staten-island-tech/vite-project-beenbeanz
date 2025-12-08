@@ -1,10 +1,8 @@
 import { increaseHunger } from './pet.js'
 import { increaseLvl } from './pet.js';
 import { increaseHappiness } from './pet.js';
-//import { decreaseHunger } from './pet.js';
 import { playGif } from './pet.js';
 import { stopGif } from './pet.js'
-import { attachPlayListeners } from './main.js';
 
 //RETRIEVE PREVIOUS SAVED PLAYLISTS
 export const allPlaylists = [];
@@ -41,8 +39,6 @@ const initialSongsContainer = document.querySelector('.initialSongsContainer');
 const playlistForm = document.querySelector(".addPlaylistForm");
 const addSongsForm = document.querySelector('.addSongsForm');
 
-
-
 if(allPlaylists.length != 0){
   allPlaylists.forEach((playlist, index) => {
     playlistTabs.insertAdjacentHTML('beforeend',
@@ -52,6 +48,18 @@ if(allPlaylists.length != 0){
       `<option value="${playlist.playlistName}">${playlist.playlistName}</option>`
     );
   })
+}
+
+export function attachPlayListeners() {
+  const playPauseBtns = document.querySelectorAll('.playPauseBtn');
+  playPauseBtns.forEach(btn => btn.style.pointerEvents = 'all')
+
+  playPauseBtns.forEach(btn => {
+    btn.addEventListener('click', e => {
+      showPlayingBar(e);
+      console.log('oihfioajwoirj')
+    });
+  });
 }
 
 export function renderSongs(arr, element){
@@ -76,7 +84,7 @@ export function renderSongs(arr, element){
     element.innerHTML += html;  
   });  
 
-  attachPlayListeners(initialSongsContainer);
+  attachPlayListeners();
 }
 
 export function addPlaylistForm(){
@@ -85,7 +93,6 @@ export function addPlaylistForm(){
   addSongsForm.style.display = 'none';
 }
 
-const songs = [];
 export function submitPlaylistForm(){
   const obj = {};
   for (let i = 0; i < playlistForm.elements.length; i++) {
@@ -168,6 +175,7 @@ export function submitSongForm(){
   //add song to playlist
   addSongsForm.style.display = 'none';
   renderSongs(songsArr, initialSongsContainer)
+  console.log('hjif')
   attachPlayListeners();
   increaseHunger();
 }
@@ -185,7 +193,6 @@ function renderSongAdded(song){
     </div>
   `);
 }
-
 
 let timerInterval;
 let seconds = 0;

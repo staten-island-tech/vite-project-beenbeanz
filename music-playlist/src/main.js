@@ -32,13 +32,6 @@ document.querySelectorAll('.petImg').forEach(pet =>
         selectPet(e)
 }));
 
-export function attachPlayListeners() {
-  const playPauseBtns = document.querySelectorAll('.playPauseBtn');
-  playPauseBtns.forEach(btn => {
-    btn.addEventListener('click', e => {showPlayingBar(e)});
-  });
-}
-
 const textElems = [];
 const backgroundElems = [];
 const borderElems = [];

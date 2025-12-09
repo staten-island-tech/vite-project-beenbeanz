@@ -190,12 +190,12 @@ export function decreaseHappiness(){
 
 export function playGif(){
     const petImg = document.querySelector('.selectedPet');
-    petImg.src = 'assets/' + petImg.dataset.animal + '.gif';
+    petImg.src = 'public/' + petImg.dataset.animal + '.gif';
 }
 
 export function stopGif(){
     const petImg = document.querySelector('.selectedPet');
-    petImg.src = 'assets/' + petImg.dataset.animal + '.png';
+    petImg.src = 'public/' + petImg.dataset.animal + '.png';
 }
 /*  one min of song -> happy++
     one song added -> hunger++

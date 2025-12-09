@@ -31,7 +31,7 @@ if(allPlaylists.length != 0){
 }
 
 export const songsArr = [
-  { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "./assets/guitar_songs.png" },
+  { name: "The 30th", artist: "Billie Eilish", album: "Guitar Songs", length: "4:41", image: "public/guitar_songs.png" },
   { name: "Bittersuite", artist: "Billie Eilish", album: "Hit me Hard and Soft", length: "4:58", image: "assets/hmhas.png" },
   { name: "i love you", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "4:51", image: "assets/wwafawdwg.png" },
   { name: "Bad Guy", artist: "Billie Eilish", album: "WHEN WE ALL FALL ASLEEP, WHERE DO WE GO", length: "3:14", image: "assets/wwafawdwg.png" },

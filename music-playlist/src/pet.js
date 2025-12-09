@@ -190,7 +190,7 @@ export function decreaseHappiness(){
 
 export function playGif(){
     const petImg = document.querySelector('.selectedPet');
-    petImg.src = petImg.dataset.animal + '.gif';
+    petImg.src = '/' + petImg.dataset.animal + '.gif';
 }
 
 export function stopGif(){

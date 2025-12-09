@@ -195,7 +195,7 @@ export function playGif(){
 
 export function stopGif(){
     const petImg = document.querySelector('.selectedPet');
-    petImg.src =   petImg.dataset.animal + '.png';
+    petImg.src = petImg.dataset.animal + '.png';
 }
 /*  one min of song -> happy++
     one song added -> hunger++

@@ -179,7 +179,6 @@ export function submitSongForm(){
   //add song to playlist
   addSongsForm.style.display = 'none';
   renderSongs(songsArr, initialSongsContainer)
-  console.log('hjif')
   attachPlayListeners();
   increaseHunger();
 }
